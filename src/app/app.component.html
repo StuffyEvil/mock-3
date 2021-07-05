@@ -4,13 +4,45 @@
 -->
 
 <mat-card>
-
   <!--
     Header
     Try using Material Card header for this?
   -->
-  <mat-card-header>
+  <mat-card-header id="header">
+    <!-- Logo Image -->
+    <a [routerLink]="['/home']" routerLinkActive="active">
+      <img src="../assets/images/Logo.png" alt="Logo" id="logo" />
+    </a>
+
+    <!-- Navigation List -->
+    <ul class="navbar-nav">
+
+      <!-- Home -->
+      <li class="nav-item nav_links">
+        <a class="nav-link" [routerLink]="['/home']"
+           routerLinkActive="active">
+          <button mat-button color="primary">Home</button>
+        </a>
+      </li>
+
+      <!-- Products -->
+      <li class="nav-item nav_links">
+        <a class="nav-link"
+           [routerLink]="['/products']"
+           routerLinkActive="active">
+           <button mat-button>Products</button>
+        </a>
+      </li>
+
+      <!-- About Us -->
+      <li class="nav-item nav_links">
+        <a class="nav-link"
+           [routerLink]="['/about-us']"
+           routerLinkActive="active">
+           <button mat-button>About Us</button>
+        </a>
+      </li>
+    </ul>
 
   </mat-card-header>
-
 </mat-card>

@@ -12,24 +12,90 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$mock-3-primary: mat-palette($mat-indigo);
-$mock-3-accent: mat-palette($mat-pink, A200, A100, A400);
+
+
+
+// Going to produce my own palettes.
+
+// Primary palette:
+// Jade-themed
+$jade-palette:
+(
+  50: #e5f6ee,
+  100: #c1e7d5,
+  200: #98d8ba,
+  300: #6bcaa0,
+  400: #46be8c,
+  500: #09b278,
+  600: #00a36d,
+  700: #00915f,
+  800: #007f53,
+  900: #005f3d,
+
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(white, 0.87),
+    900: rgba(white, 0.87),
+  )
+);
+
+
+// Accent palette:
+// Gold-themed
+$gold-palette:
+(
+  50: #fffde5,
+  100: #fff9c0,
+  200: #fff595,
+  300: #fef167,
+  400: #fcec3f,
+  500: #fae700,
+  600: #ffd900,
+  700: #ffc000,
+  800: #ffa700,
+  900: #f37a00,
+
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+  )
+);
+
+
+
+$mock-primary: mat-palette($jade-palette);
+$mock-accent: mat-palette($gold-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$mock-3-warn: mat-palette($mat-red);
+$mock-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$mock-3-theme: mat-light-theme((
+$mock-theme: mat-light-theme((
   color: (
-    primary: $mock-3-primary,
-    accent: $mock-3-accent,
-    warn: $mock-3-warn,
+    primary: $mock-primary,
+    accent: $mock-accent,
+    warn: $mock-warn,
   )
 ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($mock-3-theme);
+@include angular-material-theme($mock-theme);
 
