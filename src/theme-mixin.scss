@@ -17,7 +17,7 @@
   // Obtain the palettes
   $p: map-get($mock-theme, primary);
   $a: map-get($mock-theme, accent);
-  $w: map=get($mock-theme, warn);
+  $w: map-get($mock-theme, warn);
 
   // Obtain the colours
   $primary: mat-color($p);
@@ -40,6 +40,24 @@
   .colour.warning
   {
     color: $warning;
+  }
+
+
+  // Background set-up
+
+  .background.primary
+  {
+    background-color: $primary;
+  }
+
+  .background.accent
+  {
+    background-color: $accent;
+  }
+
+  .background.warning
+  {
+    background-color: $warning;
   }
 }
 
