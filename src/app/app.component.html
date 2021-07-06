@@ -1,48 +1,75 @@
 <!--
   I will use Angular Material to construct stuff.
-  Try using Material Card as basis?
+  Use a div as the warp structure.
 -->
 
-<mat-card id="card" class="background primary">
-  <!--
-    Header
-    Try using Material Card header for this?
-  -->
-  <mat-card-header id="header" class="background primary">
+<div id="header" class="container-fluid background primary">
 
-    <!-- Logo Image -->
-    <a [routerLink]="['/home']" routerLinkActive="active">
-      <img src="../assets/images/Logo.png" alt="Logo" id="logo" />
-    </a>
+  <!-- Logo Image -->
+  <a [routerLink]="['/home']" routerLinkActive="active">
+    <img src="../assets/images/Logo.png" alt="Logo" id="logo" />
+  </a>
 
-    <!-- Navigation List -->
-    <div class="container" id="header-container">
-      <ul>
-        <!-- Home -->
-        <li>
-          <a [routerLink]="['/home']" routerLinkActive="active">
-            <button mat-button color="accent" class="button">
-              Home</button>
-          </a>
-        </li>
+  <!-- Navigation List -->
+  <div id="header-container">
+    <ul>
+      <!-- Home -->
+      <li>
+        <a [routerLink]="['/home']" routerLinkActive="active">
+          <button mat-button color="accent" class="button">
+            Home</button>
+        </a>
+      </li>
 
-        <!-- Products -->
-        <li>
-          <a [routerLink]="['/products']" routerLinkActive="active">
-            <button mat-button color="accent" class="button">
-              Products</button>
-          </a>
-        </li>
+      <!-- Products -->
+      <li>
+        <a [routerLink]="['/products']" routerLinkActive="active">
+          <button mat-button color="accent" class="button">
+            Products</button>
+        </a>
+      </li>
 
-        <!-- About Us -->
-        <li>
-          <a [routerLink]="['/about-us']" routerLinkActive="active">
-            <button mat-button color="accent" class="button">
-              About Us</button>
-          </a>
-        </li>
-      </ul>
+      <!-- About Us -->
+      <li>
+        <a [routerLink]="['/about-us']" routerLinkActive="active">
+          <button mat-button color="accent" class="button">
+            About Us</button>
+        </a>
+      </li>
+    </ul>
+  </div>
 
+</div>
+
+
+<!--
+  Router Outlet
+-->
+<router-outlet></router-outlet>
+
+
+
+<div id="footer" class="container-fluid background primary">
+  <div class="row">
+
+    <div class="col-4">
+      <h3>Social Media</h3>
+      <p>Facebook</p>
+      <p>Twitter</p>
+      <p>Youtube</p>
     </div>
-  </mat-card-header>
-</mat-card>
+
+    <div class="col-4">
+      <h3>Customer Support</h3>
+      <a [routerLink]="['/q-a']" routerLinkActive="active">
+        Q & A</a>
+    </div>
+
+    <div class="col-4">
+      <h3>About Us</h3>
+      <a [routerLink]="['/about-us']" routerLinkActive="active">
+        About Us</a>
+    </div>
+
+  </div>
+</div>
