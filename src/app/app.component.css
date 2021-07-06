@@ -1,8 +1,15 @@
+/* CSS for Card ~ ID */
+#card
+{
+  min-height:100%;
+}
+
+
 /* CSS for Header ~ ID */
 #header
 {
   height:fit-content;
-  padding:5px;
+  padding:10px;
   position:sticky;
 }
 
@@ -18,19 +25,30 @@
 {
   width:fit-content;
   height:fit-content;
-  margin:5px;
   display:inline;
   float:left;
 }
 
-ul {
+
+/* CSS for Navigational Stuff */
+
+ul
+{
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-li {
+li
+{
   float: left;
   margin:5px;
+}
+
+/* Stuff for buttons */
+.button
+{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
 }

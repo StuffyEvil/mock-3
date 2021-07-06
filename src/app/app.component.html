@@ -3,7 +3,7 @@
   Try using Material Card as basis?
 -->
 
-<mat-card>
+<mat-card id="card" class="background primary">
   <!--
     Header
     Try using Material Card header for this?
@@ -21,21 +21,24 @@
         <!-- Home -->
         <li>
           <a [routerLink]="['/home']" routerLinkActive="active">
-            <button mat-button color="accent">Home</button>
+            <button mat-button color="accent" class="button">
+              Home</button>
           </a>
         </li>
 
         <!-- Products -->
         <li>
           <a [routerLink]="['/products']" routerLinkActive="active">
-            <button mat-button color="accent">Products</button>
+            <button mat-button color="accent" class="button">
+              Products</button>
           </a>
         </li>
 
         <!-- About Us -->
         <li>
           <a [routerLink]="['/about-us']" routerLinkActive="active">
-            <button mat-button color="accent">About Us</button>
+            <button mat-button color="accent" class="button">
+              About Us</button>
           </a>
         </li>
       </ul>
