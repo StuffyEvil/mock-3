@@ -6,6 +6,13 @@
   position:sticky;
 }
 
+/* CSS for Header Container ~ ID */
+#header-container
+{
+  display: flex;
+  align-items: flex-end;
+}
+
 /* CSS for Logo ~ ID */
 #logo
 {
@@ -14,4 +21,16 @@
   margin:5px;
   display:inline;
   float:left;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+  margin:5px;
 }

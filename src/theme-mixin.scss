@@ -1,0 +1,48 @@
+/*
+ * Gonna try to set up a Angular Material Theme Mixin for applying
+ * colours and such.
+ */
+
+// Import Theming
+@import '~@angular/material/theming';
+
+// Include Material Core
+@include mat-core();
+
+
+
+// The Colour Mixin
+@mixin theme-colours($mock-theme)
+{
+  // Obtain the palettes
+  $p: map-get($mock-theme, primary);
+  $a: map-get($mock-theme, accent);
+  $w: map=get($mock-theme, warn);
+
+  // Obtain the colours
+  $primary: mat-color($p);
+  $accent: mat-color($a);
+  $warning: mat-color($w);
+
+
+  // Colour set-up
+
+  .colour.primary
+  {
+    color: $primary;
+  }
+
+  .colour.accent
+  {
+    color: $accent;
+  }
+
+  .colour.warning
+  {
+    color: $warning;
+  }
+}
+
+
+
+// Pretty sure I don't really need typography? At least for now.

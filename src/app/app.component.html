@@ -9,40 +9,37 @@
     Try using Material Card header for this?
   -->
   <mat-card-header id="header">
+
     <!-- Logo Image -->
     <a [routerLink]="['/home']" routerLinkActive="active">
       <img src="../assets/images/Logo.png" alt="Logo" id="logo" />
     </a>
 
     <!-- Navigation List -->
-    <ul class="navbar-nav">
+    <div class="container" id="header-container">
+      <ul>
+        <!-- Home -->
+        <li>
+          <a [routerLink]="['/home']" routerLinkActive="active">
+            <button mat-button color="accent">Home</button>
+          </a>
+        </li>
 
-      <!-- Home -->
-      <li class="nav-item nav_links">
-        <a class="nav-link" [routerLink]="['/home']"
-           routerLinkActive="active">
-          <button mat-button color="primary">Home</button>
-        </a>
-      </li>
+        <!-- Products -->
+        <li>
+          <a [routerLink]="['/products']" routerLinkActive="active">
+            <button mat-button color="accent">Products</button>
+          </a>
+        </li>
 
-      <!-- Products -->
-      <li class="nav-item nav_links">
-        <a class="nav-link"
-           [routerLink]="['/products']"
-           routerLinkActive="active">
-           <button mat-button>Products</button>
-        </a>
-      </li>
+        <!-- About Us -->
+        <li>
+          <a [routerLink]="['/about-us']" routerLinkActive="active">
+            <button mat-button color="accent">About Us</button>
+          </a>
+        </li>
+      </ul>
 
-      <!-- About Us -->
-      <li class="nav-item nav_links">
-        <a class="nav-link"
-           [routerLink]="['/about-us']"
-           routerLinkActive="active">
-           <button mat-button>About Us</button>
-        </a>
-      </li>
-    </ul>
-
+    </div>
   </mat-card-header>
 </mat-card>
