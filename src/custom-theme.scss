@@ -84,7 +84,7 @@ $gold-palette:
 
 // Set the palettes accordingly.
 $mock-primary: mat-palette($jade-palette,600);
-$mock-accent: mat-palette($gold-palette,700);
+$mock-accent: mat-palette($gold-palette,600);
 
 // The warn palette is optional (defaults to red).
 $mock-warn: mat-palette($mat-red);

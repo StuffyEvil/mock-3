@@ -1,1 +1,144 @@
-<p>home works!</p>
+<!--
+  BTW, I took all the images off of the Google Images just
+  as placeholder.
+-->
+<p id="disclaimer" class="background accent">
+  FYI, all of these photos I just "borrowed" off of Google Images,
+  because producing my own photos for a mock-old implementation will
+  take too much time, at least for now.
+</p>
+
+
+
+<!--
+  Carousel:
+-->
+
+<ngb-carousel>
+  <!-- Slide 1 -->
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="assets/images/Tea 1.jpg"
+           alt="Tea 1" class="carousel-image">
+    </div>
+    <div>
+      <h4 class="carousel-caption">Picture for Tea 1</h4>
+    </div>
+  </ng-template>
+
+  <!-- Slide 2 -->
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="assets/images/Tea 2.jpg"
+           alt="Tea 2" class="carousel-image">
+    </div>
+    <div>
+      <h4 class="carousel-caption">Picture for Tea 2</h4>
+    </div>
+  </ng-template>
+
+  <!-- Slide 3 -->
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="assets/images/Tea 3.jpg"
+           alt="Tea 3" class="carousel-image">
+    </div>
+    <div>
+      <h4 class="carousel-caption">Picture for Tea 3</h4>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+
+
+<!--
+    Sample Grid System:
+     - this instance holds various tea types
+-->
+
+<div class="background accent">
+  <!-- Row 1 -->
+  <div class="row rows">
+    <!-- Black Tea -->
+    <div class="col-4">
+      <mat-card class="grid-module">
+        <a [routerLink]="['/products/1']" routerLinkActive="active">
+          <img class="card-img-bottom"
+               src="../../assets/images/Black Tea.jpg" alt="Black Tea">
+          <div class="card-body" style="color:black">
+            Black Tea
+          </div>
+        </a>
+      </mat-card>
+    </div>
+
+    <!-- Green Tea -->
+    <div class="col-4">
+      <mat-card class="grid-module">
+        <a [routerLink]="['/products/2']" routerLinkActive="active">
+          <img class="card-img-bottom"
+               src="../../assets/images/Green Tea.jpg" alt="Green Tea">
+          <div class="card-body" style="color:green">
+            Green Tea
+          </div>
+        </a>
+      </mat-card>
+    </div>
+
+    <!-- White Tea -->
+    <div class="col-4">
+      <mat-card class="grid-module">
+        <a [routerLink]="['/products/3']" routerLinkActive="active">
+          <img class="card-img-bottom"
+               src="../../assets/images/White Tea.jpg" alt="White Tea">
+          <div class="card-body" style="color:grey">
+            White Tea
+          </div>
+        </a>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="row rows">
+    <!-- Yellow Tea -->
+    <div class="col-4">
+      <mat-card class="grid-module">
+        <a [routerLink]="['/products/4']" routerLinkActive="active">
+          <img class="card-img-bottom"
+               src="../../assets/images/Yellow Tea.png" alt="Yellow Tea">
+          <div class="card-body" style="color:goldenrod">
+            Yellow Tea
+          </div>
+        </a>
+      </mat-card>
+    </div>
+
+    <!-- Oolong Tea -->
+    <div class="col-4">
+      <mat-card class="grid-module">
+        <a [routerLink]="['/products/5']" routerLinkActive="active">
+          <img class="card-img-bottom"
+               src="../../assets/images/Oolong Tea.jpg" alt="Oolong Tea">
+          <div class="card-body" style="color:yellowgreen">
+            Oolong Tea
+          </div>
+        </a>
+      </mat-card>
+    </div>
+
+    <!-- Pu-erh Tea -->
+    <div class="col-4">
+      <mat-card class="grid-module">
+        <a [routerLink]="['/products/6']" routerLinkActive="active">
+          <img class="card-img-bottom"
+               src="../../assets/images/Pu-erh Tea.jpg" alt="Pu-erh Tea">
+          <div class="card-body" style="color:brown">
+            Pu-erh Tea
+          </div>
+        </a>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

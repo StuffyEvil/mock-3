@@ -1,0 +1,29 @@
+/* CSS for Disclaimer Message */
+#disclaimer
+{
+  padding: 5px;
+  margin: 0px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+/* CSS for Carousel Images */
+.carousel-image
+{
+  width: 100%;
+}
+
+/* CSS for Carousel Caption */
+.carousel-caption
+{
+  text-shadow: 1px 1px black;
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+/* CSS for Grid Modules */
+.grid-module
+{
+  margin: 20px;
+}
