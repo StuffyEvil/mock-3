@@ -1,0 +1,16 @@
+/* CSS for wrapping container */
+#wrap
+{
+  padding: 20px;
+}
+
+/* CSS for image */
+#image
+{
+  width: fit-content;
+  height: fit-content;
+  margin: 10px;
+  /* I am using flex to align the image to the left */
+  display: flex;
+  flex-direction: row-reverse;
+}
