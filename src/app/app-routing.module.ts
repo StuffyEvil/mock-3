@@ -10,6 +10,11 @@ const routes: Routes =
   { path: 'home', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'q-a', component: QAComponent },
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('./products/products.module').then(m => m.ProductsModule)
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
