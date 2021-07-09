@@ -10,6 +10,7 @@
   width: fit-content;
   height: fit-content;
   margin: 10px;
+  border: 1px solid black;
   /* I am using flex to align the image to the left */
   display: flex;
   flex-direction: row-reverse;
