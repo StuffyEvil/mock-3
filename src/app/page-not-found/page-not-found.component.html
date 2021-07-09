@@ -1,1 +1,19 @@
-<p>page-not-found works!</p>
+<!-- div as wrapper -->
+<div id="wrapper" class="background accent">
+  <!-- Material Card to hold the actual text -->
+  <mat-card>
+    <!-- Mat-Card Title -->
+    <mat-card-title>Page Not Found!</mat-card-title>
+
+    <!-- Mat-Card Content -->
+    <mat-card-content>
+      <p>The page you are looking for doesn't exist.</p>
+
+      <!-- Return Button -->
+      <a [routerLink]="['/home']" routerLinkActive="active">
+        <button mat-raised-button color="primary">
+          Return to Home</button>
+      </a>
+    </mat-card-content>
+  </mat-card>
+</div>
