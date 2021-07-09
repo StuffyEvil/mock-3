@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './q-a.component.html',
   styleUrls: ['./q-a.component.css']
 })
-export class QAComponent implements OnInit {
-
+export class QAComponent implements OnInit
+{
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
