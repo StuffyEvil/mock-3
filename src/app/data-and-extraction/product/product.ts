@@ -1,5 +1,5 @@
 // Basically the same as that from PluralSight, as no change is needed.
-export interface Products
+export interface Product
 {
   id: number;
   productName: string;
