@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { QAComponent } from './q-a/q-a.component';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { Data } from './data';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,14 +23,16 @@ import { QAComponent } from './q-a/q-a.component';
     HomeComponent,
     AboutUsComponent,
     PageNotFoundComponent,
-    QAComponent
+    QAComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    InMemoryWebApiModule.forRoot(Data),
   ],
   providers: [],
   bootstrap: [AppComponent]
