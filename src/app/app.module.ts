@@ -6,26 +6,28 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MaterialModule } from './material/material.module';
-import { HomeComponent } from './home/home.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { QAComponent } from './q-a/q-a.component';
+import { MaterialModule } from './shared/material.module';
+import { HomeComponent } from './pages-archive/home/home.component';
+import { AboutUsComponent } from './pages-archive/about-us/about-us.component';
+import { PageNotFoundComponent } from './pages-archive/page-not-found/page-not-found.component';
+import { QAComponent } from './pages-archive/q-a/q-a.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { Data } from './data';
+import { Data } from './data-and-extraction/data';
 import { HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
-  declarations: [
+  declarations:
+  [
     AppComponent,
     HomeComponent,
     AboutUsComponent,
     PageNotFoundComponent,
     QAComponent,
   ],
-  imports: [
+  imports:
+  [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
