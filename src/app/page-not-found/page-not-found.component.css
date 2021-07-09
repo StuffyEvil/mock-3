@@ -2,4 +2,17 @@
 #wrapper
 {
   padding: 20px;
+  /* Stopgap height cause I don't know how to make footer at the bottom
+     of the page. */
+  height: 65%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+/* CSS for card */
+#card
+{
+  width: fit-content;
 }
