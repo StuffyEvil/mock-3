@@ -16,6 +16,6 @@ export interface Product
 // Extra interface for processed Product data
 export interface ProductResolved
 {
-  product: ProductResolved;
+  product: Product;
   error?: any;
 }
