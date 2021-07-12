@@ -16,7 +16,10 @@ import { ProductListComponent } from './product-list/product-list.component';
     MaterialModule,
     RouterModule.forChild(
       [
-
+        {
+          path: ' ',
+          component: ProductListComponent
+        },
       ]
     )
   ]
