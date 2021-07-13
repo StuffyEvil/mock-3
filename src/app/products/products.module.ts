@@ -17,7 +17,7 @@ import { ProductListComponent } from './product-list/product-list.component';
     RouterModule.forChild(
       [
         {
-          path: ' ',
+          path: '',
           component: ProductListComponent
         },
       ]

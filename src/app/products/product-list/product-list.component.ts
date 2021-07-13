@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, combineLatest, EMPTY, Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, combineLatest, EMPTY, Observable, Subscription } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CategoriesService } from 'src/app/data-and-extraction/category/categories.service';
 import { Category } from 'src/app/data-and-extraction/category/category';
@@ -13,7 +12,7 @@ import { ProductsService } from 'src/app/data-and-extraction/product/products.se
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit
+export class ProductListComponent implements OnInit, OnDestroy
 {
   /* --- Fields --- */
 
@@ -50,6 +49,8 @@ export class ProductListComponent implements OnInit
 
   // Category Observable:
   categoriesObs$: Observable<Category[]>;
+  // Category Subscription:
+  categoriesSub$;
 
   // Category Behaviour:
   private categorySubject = new BehaviorSubject<number>(0);
@@ -58,6 +59,8 @@ export class ProductListComponent implements OnInit
 
   // An Observable that have multiple things combined together.
   superCombine$;
+  // superCombine Subscription:
+  superSub$;
 
 
 
@@ -65,7 +68,6 @@ export class ProductListComponent implements OnInit
   // Constructor:
   // Inject the required elements.
   constructor(private productService: ProductsService,
-              private route: ActivatedRoute,
               private categoryService: CategoriesService,) { }
 
 
@@ -85,7 +87,7 @@ export class ProductListComponent implements OnInit
     this.categoriesObs$ = this.categoryService.getCategories();
 
     // Subscribe to set up categories, which makes filtering easier.
-    this.categoriesObs$.subscribe(
+    this.categoriesSub$ = this.categoriesObs$.subscribe(
       {
         next: categories =>
         {
@@ -148,7 +150,9 @@ export class ProductListComponent implements OnInit
         console.log("Something went wrong with combine.");
         return EMPTY;
       }),
-    ).subscribe({
+    );
+
+    this.superSub$ = this.superCombine$.subscribe({
       next: output => {
         // An empty subscription basically.
         // This will proc the map stuff above and have the filtered
@@ -156,6 +160,19 @@ export class ProductListComponent implements OnInit
         // Is there probably a better way to do this? Yeah ...
       }
     })
+  }
+
+
+  // On Destruction:
+  ngOnDestroy(): void
+  {
+    // Unsubscribe accordingly.
+
+    // Unsubscribe from categories.
+    this.categoriesSub$.unsubscribe();
+
+    // Unsubscribe from the super combine.
+    this.superSub$.unsubscribe();
   }
 
 

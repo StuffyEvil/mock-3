@@ -1,1 +1,89 @@
-<p>product-list works!</p>
+<!-- First wrap in in a div -->
+<div class="background accent" id="wrapper">
+
+  <!-- Angular Material Card -->
+  <mat-card>
+
+    <!-- Card Header ~ this may not be needed
+    <mat-card-header id="header">
+      <h4>Product List</h4>
+    </mat-card-header> -->
+
+    <!-- Content -->
+    <mat-card-content>
+
+      <!-- Input Rows -->
+      <div class="row">
+
+        <!-- Fitering Input -->
+        <mat-form-field appearance="outline" color="primary" class="input">
+          <mat-label>Filter By:</mat-label>
+          <input matInput placeholder="E.x. Tea" [(ngModel)]="listFilter">
+        </mat-form-field>
+
+        <!-- Category Filter Input -->
+        <mat-form-field appearance="outline" color="primary" class="input">
+          <mat-label>Category Sorting:</mat-label>
+          <mat-select (change)="pushCategory($event.target.value)">
+            <mat-option value="0">All</mat-option>
+            <mat-option *ngFor="let category of categories"
+                        [value]="category.id">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Might add more element here later. -->
+
+      </div>
+
+      <!-- Product List ~ Row -->
+      <!-- We can utilize Angular Material Table for this -->
+      <div class="row">
+        <table mat-table [dataSource]="filteredProducts">
+
+          <!-- Image Column -->
+          <ng-container matColumnDef="imageUrl">
+            <th mat-header-cell *matHeaderCellDef>Image</th>
+            <td mat-cell *matCellDef="let product">
+              <img alt="No Image Found" [src]="product.imageUrl"
+                   [title]="product.productName">
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="productName">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let product">
+              {{product.productName}}
+            </td>
+          </ng-container>
+
+          <!-- Category Column -->
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef>Category</th>
+            <td mat-cell *matCellDef="let product">
+              {{product.category}}
+            </td>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let product">
+              ${{product.price}}
+            </td>
+          </ng-container>
+
+          <!-- Rating Column -->
+          <ng-container matColumnDef="rating">
+
+          </ng-container>
+
+        </table>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
