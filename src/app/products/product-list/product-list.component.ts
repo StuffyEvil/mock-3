@@ -63,6 +63,10 @@ export class ProductListComponent implements OnInit, OnDestroy
   superSub$;
 
 
+  // Column Order for Angular Material Table:
+  rowTable: string[] = ['imageUrl', 'productName', 'category',
+                        'price', 'rating'];
+
 
 
   // Constructor:

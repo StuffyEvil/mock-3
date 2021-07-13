@@ -16,3 +16,17 @@
 {
   margin: 15px;
 }
+
+/* CSS for table */
+table
+{
+  width: 90%;
+  margin: 15px;
+}
+
+/* CSS for images */
+.image
+{
+  height: 75px;
+  margin: 2px;
+}
