@@ -61,21 +61,21 @@
   }
 
 
-  // Outline Setup:
+  // Border Setup:
 
-  .outline.primary
+  .border.primary
   {
-    outline-color: $primary;
+    border: 5px solid $primary;
   }
 
-  .outline.accent
+  .border.accent
   {
-    outline-color: $accent;
+    border: $accent;
   }
 
-  .outline.warning
+  .border.warning
   {
-    outline-color: $warning;
+    border: $warning;
   }
 }
 
