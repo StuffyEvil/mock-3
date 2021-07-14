@@ -22,10 +22,16 @@
 }
 
 
+/* CSS for Grid Rows */
+.rows
+{
+  margin: 0px;
+}
+
 /* CSS for Grid Modules */
 .grid-module
 {
-  margin: 5%;
+  margin: 25px;
 }
 
 /* CSS for Grid Images */
