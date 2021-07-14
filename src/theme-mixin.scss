@@ -65,17 +65,18 @@
 
   .border.primary
   {
-    border: 5px solid $primary;
+    border: 5px solid;
+    border-color: $primary;
   }
 
   .border.accent
   {
-    border: $accent;
+    border: 5px solid $accent;
   }
 
   .border.warning
   {
-    border: $warning;
+    border: 5px solid $warning;
   }
 }
 

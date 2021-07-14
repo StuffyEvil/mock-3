@@ -15,6 +15,7 @@
 .input
 {
   margin: 15px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 /* CSS for table */
@@ -32,4 +33,15 @@ table
 {
   height: 125px;
   margin: 5px;
+}
+
+/* CSS for th & td element */
+th, td
+{
+  font-family: 'Times New Roman', Times, serif;
+}
+th
+{
+  font-size: large;
+  color: black;
 }
