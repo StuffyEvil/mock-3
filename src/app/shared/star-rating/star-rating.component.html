@@ -1,13 +1,112 @@
-<!-- Copied and Pasted from PluralSight Angular Tutorials -->
+<!-- Copied and Pasted from PluralSight Angular Tutorials
 
 <div class="crop"
      [style.width.px]="starWidth"
      [title]="rating">
-  <div style="width: 75px">
-    <span class="material-icons-outlined">star_rate</span>
-    <span class="material-icons-outlined">star_rate</span>
-    <span class="material-icons-outlined">star_rate</span>
-    <span class="material-icons-outlined">star_rate</span>
-    <span class="material-icons-outlined">star_rate</span>
+  <div style="width: 200px">
+    <mat-icon aria-hidden="false" aria-label="icon">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="icon">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="icon">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="icon">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="icon">star</mat-icon>
   </div>
+</div> -->
+
+
+<!--
+  New Icon Loader
+  I will be using a lot of ngIf statements to output the right stars.
+  I will also be using different icons for different amounts.
+-->
+<div>
+
+  <!-- First Star -->
+
+  <!-- If rating is bigger or equal to 1 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+            *ngIf="rating >= 1">
+    star</mat-icon>
+
+  <!-- If rating below 0.5 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating < 0.5">
+    star_border</mat-icon>
+
+  <!-- If rating is bigger or equal to 0.5 but smaller than 1 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating >= 0.5 && rating < 1">
+    star_half</mat-icon>
+
+
+  <!-- Second Star -->
+
+  <!-- If rating is bigger or equal to 2 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+            *ngIf="rating >= 2">
+    star</mat-icon>
+
+  <!-- If rating is below 1.5 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating < 1.5">
+    star_border</mat-icon>
+
+  <!-- If rating is bigger or equal to 1.5 but smaller than 2 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating >= 1.5 && rating < 2">
+    star_half</mat-icon>
+
+
+  <!-- Third Star -->
+
+  <!-- If rating is bigger or equal to 3 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+            *ngIf="rating >= 3">
+    star</mat-icon>
+
+  <!-- If rating is below 2.5 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+            *ngIf="rating < 2.5">
+    star_border</mat-icon>
+
+  <!-- If rating is bigger or equal to 2.5 but smaller than 3 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating >= 2.5 && rating < 3">
+    star_half</mat-icon>
+
+
+  <!-- Fourth Star -->
+
+  <!-- If rating is bigger or equal to 4 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+            *ngIf="rating >= 4">
+    star</mat-icon>
+
+  <!-- If rating is below 3.5 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating < 3.5">
+    star_border</mat-icon>
+
+  <!-- If rating is bigger or equal to 3.5 but smaller than 4 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating >= 3.5 && rating < 4">
+    star_half</mat-icon>
+
+
+  <!-- Fifth Star -->
+
+  <!-- If rating is 5-->
+  <mat-icon aria-hidden="false" aria-label="icon"
+            *ngIf="rating >= 5">
+    star</mat-icon>
+
+  <!-- If rating is below 4.5 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating < 4.5">
+    star_border</mat-icon>
+
+  <!-- If rating is bigger or equal to 4.5 but smaller than 5 -->
+  <mat-icon aria-hidden="false" aria-label="icon"
+          *ngIf="rating >= 4.5 && rating < 5">
+    star_half</mat-icon>
+
 </div>
