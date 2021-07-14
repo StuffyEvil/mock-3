@@ -1,7 +1,7 @@
 /* CSS for wrapper div */
 #wrapper
 {
-  padding: 20px;
+  padding: 25px;
 }
 
 /* CSS for header */
@@ -20,13 +20,16 @@
 /* CSS for table */
 table
 {
-  width: 90%;
-  margin: 15px;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* CSS for images */
 .image
 {
-  height: 75px;
-  margin: 2px;
+  height: 125px;
+  margin: 5px;
 }

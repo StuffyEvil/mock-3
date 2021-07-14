@@ -25,7 +25,7 @@
         <!-- Category Filter Input -->
         <mat-form-field appearance="outline" color="primary" class="input">
           <mat-label>Category Sorting:</mat-label>
-          <mat-select (change)="pushCategory($event.target.value)">
+          <mat-select [(value)]="selectedCategory">
             <mat-option value="0">All</mat-option>
             <mat-option *ngFor="let category of categories"
                         [value]="category.id">
@@ -43,7 +43,7 @@
       <!-- We can utilize Angular Material Table for this -->
       <div class="row">
         <table mat-table [dataSource]="filteredProducts"
-               class="mat-elevation-z8">
+               class="mat-elevation-z5">
 
           <!-- Image Column -->
           <ng-container matColumnDef="imageUrl">

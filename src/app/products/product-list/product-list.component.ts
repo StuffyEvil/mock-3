@@ -201,13 +201,33 @@ export class ProductListComponent implements OnInit, OnDestroy
 
   // Category Selection:
 
-  // Set Category:
+  /* Push Category: ~ outdated element
   pushCategory(input: number): void
   {
     // Sets _selectedCategory as input.
     this._selectedCategory = input;
 
+    // Signal Flare:
+    console.log("Pushing: ", input);
+
     // Pushes an element to the respective BehaviourSubject.
     this.categorySubject.next(input);
+  } */
+
+  // Getter:
+  get selectedCategory(): number
+  {
+    return this._selectedCategory;
   }
+
+  // Setter:
+  set selectedCategory(value: number)
+  {
+    // Set accordingly.
+    this._selectedCategory = value;
+
+    // Push to the BehaviourSubject.
+    this.categorySubject.next(value);
+  }
+
 }
