@@ -25,7 +25,7 @@
   $warning: mat-color($w);
 
 
-  // Colour set-up
+  // Colour Setup:
 
   .colour.primary
   {
@@ -43,7 +43,7 @@
   }
 
 
-  // Background set-up
+  // Background Setup:
 
   .background.primary
   {
@@ -58,6 +58,24 @@
   .background.warning
   {
     background-color: $warning;
+  }
+
+
+  // Outline Setup:
+
+  .outline.primary
+  {
+    outline-color: $primary;
+  }
+
+  .outline.accent
+  {
+    outline-color: $accent;
+  }
+
+  .outline.warning
+  {
+    outline-color: $warning;
   }
 }
 
