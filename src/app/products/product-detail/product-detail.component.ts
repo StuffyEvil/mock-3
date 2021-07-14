@@ -71,4 +71,21 @@ export class ProductDetailComponent implements OnInit, OnDestroy
     this.reviewsSub$.unsubscribe();
   }
 
+
+  // Retrieved Product Data:
+  onProductRetrieved(product: Product): void
+  {
+    // Set product accordingly.
+    this.product = product;
+
+    // Obtain the Product information.
+    if (this.product)
+    {
+      this.pageTitle = `Product Detail: ${this.product.productName}`;
+    }
+    else
+    {
+      this.pageTitle = 'No Product Found';
+    }
+  }
 }
