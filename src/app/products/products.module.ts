@@ -24,7 +24,7 @@ import { ProductResolverService } from '../data-and-extraction/product/product-r
           component: ProductListComponent
         },
         {
-          path: 'id',
+          path: ':id',
           component: ProductDetailComponent,
           resolve: { resolvedData: ProductResolverService }
         }

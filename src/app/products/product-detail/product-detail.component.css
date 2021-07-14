@@ -3,3 +3,9 @@
 {
   padding: 25px;
 }
+
+/* CSS for Material Header */
+mat-card-header
+{
+  font-family: 'Times New Roman', Times, serif;
+}
