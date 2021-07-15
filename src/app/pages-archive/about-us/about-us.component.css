@@ -11,7 +11,7 @@
   height: fit-content;
   margin: 10px;
   border: 1px solid black;
-  /* I am using flex to align the image to the left */
+  /* I am using flex to align the image to the right. */
   display: flex;
   flex-direction: row-reverse;
 }

@@ -1,13 +1,50 @@
 <!-- Wrapping div -->
 <div class="background accent" id="wrapper">
 
-  <!-- Card -->
+  <!-- Mat-Card -->
   <mat-card>
 
-    <!-- Header -->
-    <mat-card-header>
+    <!-- Mat-Card Title
+    <mat-card-title>
       {{product.productName}}
-    </mat-card-header>
+    </mat-card-title> -->
+
+    <!-- Mat-Card Content -->
+    <mat-card-content>
+
+      <!-- Row div -->
+      <div class="row">
+
+        <!-- Corresponding Product Image -->
+        <img mat-card-image [src]="product.imageUrl"
+             alt="Product Image" id="image">
+
+        <!-- Col div for general text -->
+        <div class="col">
+
+          <!-- Product Header -->
+          <h2 class="font">{{product.productName}}</h2>
+
+          <!-- Product Category -->
+          <h5 class="font">Tea Type ~ {{product.category}}</h5>
+
+          <hr color="primary">
+
+          <!-- Product Description -->
+          <p class="font">{{product.description}}</p>
+
+          <p>
+            I will be adding more here.<br>
+            Normally the description wouldn't be this short.<br>
+            Maybe add instructions for making the tea.<br>
+            Also a shopping cart button that I will add later.
+          </p>
+
+        </div>
+
+      </div>
+
+    </mat-card-content>
 
   </mat-card>
 </div>

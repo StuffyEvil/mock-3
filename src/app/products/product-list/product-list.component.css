@@ -33,6 +33,7 @@ table
 {
   height: 125px;
   margin: 5px;
+  border: 1px solid black;
 }
 
 /* CSS for th & td element */

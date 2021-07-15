@@ -4,8 +4,25 @@
   padding: 25px;
 }
 
-/* CSS for Material Header */
-mat-card-header
+/* CSS for Times New Roman font */
+.font
 {
   font-family: 'Times New Roman', Times, serif;
+}
+
+/* CSS for Image */
+#image
+{
+  width: 40%;
+  margin: 20px;
+  border: 1px solid black;
+  /* Using flex to align the image to the left. */
+  display: flex;
+  flex-direction: row;
+}
+
+/* CSS for h2 */
+h2
+{
+  font-weight: bold;
 }
