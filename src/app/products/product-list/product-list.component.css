@@ -14,7 +14,7 @@
 /* CSS for inputs */
 .input
 {
-  margin: 15px;
+  margin-left: 20px;
   font-family: 'Times New Roman', Times, serif;
 }
 
@@ -32,7 +32,7 @@ table
 .image
 {
   height: 125px;
-  margin: 5px;
+  margin: 10px;
   border: 1px solid black;
 }
 

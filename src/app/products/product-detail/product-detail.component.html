@@ -47,4 +47,35 @@
     </mat-card-content>
 
   </mat-card>
+
+
+  <!-- Mat-Card for Reviews -->
+  <mat-card id="review">
+
+    <!-- Mat-Card Title -->
+    <mat-card-title class="font">
+      Reviews
+    </mat-card-title>
+
+    <!-- Mat-Card Content -->
+    <mat-card-content>
+
+      <!-- Reviews can be formatted in a large variety of ways. -->
+      <div *ngFor="let review of reviews">
+
+        <!-- Horizontal Divider -->
+        <hr color="primary">
+
+        <!-- Actual Review -->
+        <div class="row reviews">
+          <div class="col-md-2 font">
+            <app-star-rating [rating]="product.rating"></app-star-rating>
+          </div>
+          <div class="col-md-10 font">{{ review.review }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
 </div>
