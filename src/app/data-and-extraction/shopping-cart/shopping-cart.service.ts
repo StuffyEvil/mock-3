@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 import { Product } from '../product/product';
 import { ShoppingCart } from './shopping-cart';
 
@@ -26,10 +28,13 @@ export class ShoppingCartService
 
 
   // Shopping Cart Getter:
-  getShoppingCart(): ShoppingCart
+  getShoppingCart(): Observable<ShoppingCart>
   {
     // Just return cart.
-    return this.cart;
+    return of(this.cart)
+      .pipe(
+        shareReplay(1),
+      );
   }
 
 

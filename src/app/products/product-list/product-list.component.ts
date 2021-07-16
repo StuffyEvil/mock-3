@@ -16,9 +16,6 @@ export class ProductListComponent implements OnInit, OnDestroy
 {
   /* --- Fields --- */
 
-  // Page Title:
-  pageTitle = "Product List";
-
   // Error Message to store errors.
   errorMessage = '';
 

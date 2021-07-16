@@ -14,7 +14,12 @@ import { CartComponent } from './cart/cart.component';
     SharedModule,
     MaterialModule,
     RouterModule.forChild(
-      []
+      [
+        {
+          path: '',
+          component: CartComponent
+        }
+      ]
     )
   ]
 })
