@@ -27,7 +27,9 @@
 
 </div>
 
-<!-- Wrapper div -->
+
+
+<!-- If cart isn't empty -->
 <div *ngIf="cart.num_of_products != 0"
      id="wrapper" class="background accent">
 
@@ -39,6 +41,71 @@
       Your Cart
     </mat-card-title>
 
+    <!-- Mat-Card Content -->
+    <mat-card-content class="font">
+
+      <!-- Mat Table to display shopping list -->
+      <table mat-table [dataSource]="cart" class="mat-elevation-z5">
+
+        <!-- Image Column -->
+        <ng-container matColumnDef="imageUrl">
+          <th class="background primary"
+              mat-header-cell *matHeaderCellDef>Image</th>
+          <td mat-cell *matCellDef="let product of cart.products">
+            <a [routerLink]="['/products', product.id]"
+               routerLinkActive="active">
+              <img alt="No Image Found" class="image"
+                   [src]="product.imageUrl" [title]="product.productName">
+            </a>
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="productName">
+          <th class="background primary"
+              mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let product of cart.products">
+            <a [routerLink]="['/products', product.id]"
+               routerLinkActive="active">
+              {{product.productName}}
+            </a>
+          </td>
+        </ng-container>
+
+        <!-- Amount Column -->
+        <ng-container matColumnDef="amount">
+          <th class="background primary"
+              mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let amount of cart.amount">
+            {{amount}}
+          </td>
+        </ng-container>
+
+        <!-- Cost Column -->
+        <ng-container matColumnDef="cost">
+          <th class="background primary"
+              mat-header-cell *matHeaderCellDef>Cost</th>
+          <td mat-cell *matCellDef="let amount of cart.amount,
+                                    let price of cart.products.price">
+            <!-- Use a pipe to limit to 2 decimal places -->
+            ${{(amount * price) | number: '1.2-2'}}
+          </td>
+        </ng-container>
+
+        <!-- Add Button Column -->
+        <ng-container matColumnDef="amount">
+          <th class="background primary"
+              mat-header-cell *matHeaderCellDef></th>
+
+        </ng-container>
+
+        <!-- Row Display -->
+        <tr mat-header-row *matHeaderRowDef="rowTable"></tr>
+        <tr mat-row *matRowDef="let row; columns: rowTable;"></tr>
+
+      </table>
+
+    </mat-card-content>
   </mat-card>
 
 </div>
