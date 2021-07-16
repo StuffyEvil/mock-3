@@ -14,3 +14,16 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
+
+/* CSS for font */
+.font
+{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* CSS for title */
+mat-card-title
+{
+  font-weight: bold;
+}
