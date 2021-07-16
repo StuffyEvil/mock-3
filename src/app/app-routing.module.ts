@@ -15,6 +15,12 @@ const routes: Routes =
     loadChildren: () =>
       import('./products/products.module').then(m => m.ProductsModule)
   },
+  {
+    path: 'shopping-cart',
+    loadChildren: () =>
+      import('./shopping-cart/shopping-cart.module')
+        .then(m => m.ShoppingCartModule)
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
