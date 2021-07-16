@@ -1,5 +1,35 @@
+<!-- If cart is empty -->
+<div *ngIf="cart.num_of_products == 0"
+     id="empty_wrapper" class="background accent">
+
+  <!-- Mat-Card -->
+  <mat-card id="empty_card">
+
+    <!-- Mat-Card Title -->
+    <mat-card-title class="font">Your Cart</mat-card-title>
+
+    <!-- Mat-Card Content -->
+    <mat-card-content>
+      <p>Your Cart is Empty</p>
+
+      <!-- Product List Button -->
+      <a [routerLink]="['/products']" routerLinkActive="active">
+        <button mat-raised-button color="primary" class="font">
+          <mat-icon aria-hidden="false" aria-label="icon">
+            shopping_cart
+          </mat-icon>
+          Return Shopping
+        </button>
+      </a>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+
 <!-- Wrapper div -->
-<div id="wrapper" class="background accent">
+<div *ngIf="cart.num_of_products != 0"
+     id="wrapper" class="background accent">
 
   <!-- Mat-Card -->
   <mat-card>
