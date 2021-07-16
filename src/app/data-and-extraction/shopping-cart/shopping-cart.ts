@@ -11,4 +11,7 @@ export interface ShoppingCart
 
   // Sum of the Cost ~ this will be updated regularly:
   total: number;
+
+  // Number of Products:
+  num_of_products: number;
 }

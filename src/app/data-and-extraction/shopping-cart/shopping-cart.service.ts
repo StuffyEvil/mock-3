@@ -17,6 +17,7 @@ export class ShoppingCartService
     "products": [],
     "amount": [],
     "total": 0,
+    "num_of_products": 0,
   };
 
 
@@ -55,8 +56,9 @@ export class ShoppingCartService
       this.cart.amount[index] += amount;
     }
 
-    // Update total.
+    // Update total & num_of_products.
     this.cart.total += amount * product.price;
+    this.cart.num_of_products += amount;
   }
 
 
@@ -70,8 +72,9 @@ export class ShoppingCartService
     var index: number = this.cart.products.indexOf(product);
 
 
-    // Update total.
+    // Update total & num_of_products.
     this.cart.total -= this.cart.amount[index] * product.price;
+    this.cart.num_of_products -= amount;
 
     // If amount is equal or greater than the amount in the cart.
     if (amount >= this.cart.amount[index])
