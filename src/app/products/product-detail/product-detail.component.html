@@ -19,6 +19,7 @@
         <img mat-card-image [src]="product.imageUrl"
              alt="Product Image" id="image">
 
+
         <!-- Col div for general text -->
         <div class="col">
 
@@ -51,10 +52,17 @@
           <div>
 
             <!-- Input for Amount -->
-            <mat-form-field appearance="outline" color="primary">
-              <mat-label>Quantity:</mat-label>
-              <input matInput [(ngModel)]="purchaseAmount">
-            </mat-form-field>
+
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>Quantity:</mat-label>
+                <input type="number" matInput>
+                <mat-error
+                  *ngIf="purchaseFormControl.hasError('required') ||
+                         purchaseFormControl.hasError('min')">
+                  Please enter a valid amount.
+                </mat-error>
+              </mat-form-field>
+
 
             <!-- Add to Shopping Cart Button -->
             <button mat-raised-button color="primary"

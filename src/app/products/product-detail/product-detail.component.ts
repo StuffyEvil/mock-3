@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Product, ProductResolved } from 'src/app/data-and-extraction/product/product';
@@ -30,7 +31,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy
 
 
   // # of Products to add:
-  _purchaseAmount: number = 1;
+  _purchaseAmount: number;
+
+  // Set up a small FormControl:
+  // Since it's so small there's no need to do anything elaborate, as
+  // we are only concerned if # of product isn't 0 or null.
+  purchaseFormControl = new FormControl(1,
+  [
+    Validators.required,
+    Validators.min(1),
+  ]);
+
 
 
 
