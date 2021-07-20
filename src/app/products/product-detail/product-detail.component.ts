@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product, ProductResolved } from 'src/app/data-and-extraction/product/product';
 import { Review, Reviews } from 'src/app/data-and-extraction/review/review';
 import { ReviewsService } from 'src/app/data-and-extraction/review/reviews.service';
+import { ShoppingCartService } from 'src/app/data-and-extraction/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -27,10 +28,16 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   reviewsSub$;
 
 
+  // # of Products to add:
+  _purchaseAmount: number = 1;
+
+
+
   // Constructor:
   // Inject what is needed.
   constructor(private reviewService: ReviewsService,
-              private route: ActivatedRoute) { }
+              private shoppingService: ShoppingCartService,
+              private route: ActivatedRoute,) { }
 
 
   // On Initialization:
@@ -87,5 +94,31 @@ export class ProductDetailComponent implements OnInit, OnDestroy
     {
       this.pageTitle = 'No Product Found';
     }
+  }
+
+
+  // Getter & Setter for purchaseAmount:
+
+  // Getters:
+  get purchaseAmount(): number
+  {
+    return this._purchaseAmount;
+  }
+
+  // Setter:
+  set purchaseAmount(amount: number)
+  {
+    // Set accordingly.
+    this._purchaseAmount = amount;
+  }
+
+
+
+  // AddToCart:
+  addToCart(): void
+  {
+    // Using _purchaseAmount, call insertShoppingCart.
+    this.shoppingService.
+      insertShoppingCart(this.product, this._purchaseAmount);
   }
 }

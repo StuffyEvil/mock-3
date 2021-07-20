@@ -28,6 +28,9 @@
           <!-- Product Category -->
           <h5 class="font">Tea Type ~ {{product.category}}</h5>
 
+          <!-- Product Price -->
+          <h4 class="font">${{product.price}}</h4>
+
           <hr color="primary">
 
           <!-- Product Description -->
@@ -39,6 +42,28 @@
             Maybe add instructions for making the tea.<br>
             Also a shopping cart button that I will add later.
           </p>
+
+
+          <hr color="primary">
+
+
+          <!-- Add to Shopping Cart -->
+          <div>
+
+            <!-- Input for Amount -->
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Quantity:</mat-label>
+              <input matInput [(ngModel)]="purchaseAmount">
+            </mat-form-field>
+
+            <!-- Add to Shopping Cart Button -->
+            <button mat-raised-button color="primary"
+                    (click)="addToCart()">
+              Add to Shopping Cart
+            </button>
+
+          </div>
+
 
         </div>
 
