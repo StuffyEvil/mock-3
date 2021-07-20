@@ -2,12 +2,13 @@
  * Gonna try to set up a Angular Material Theme Mixin for applying
  * colours and such.
  */
+@use '~@angular/material' as mat;
 
 // Import Theming
 @import '~@angular/material/theming';
 
 // Include Material Core
-@include mat-core();
+@include mat.core();
 
 
 
@@ -20,9 +21,9 @@
   $w: map-get($mock-theme, warn);
 
   // Obtain the colours
-  $primary: mat-color($p);
-  $accent: mat-color($a);
-  $warning: mat-color($w);
+  $primary: mat.get-color-from-palette($p);
+  $accent: mat.get-color-from-palette($a);
+  $warning: mat.get-color-from-palette($w);
 
 
   // Colour Setup:
