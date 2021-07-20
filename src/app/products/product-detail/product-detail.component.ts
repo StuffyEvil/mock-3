@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Product, ProductResolved } from 'src/app/data-and-extraction/product/product';
 import { Review, Reviews } from 'src/app/data-and-extraction/review/review';
@@ -37,7 +38,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   // Inject what is needed.
   constructor(private reviewService: ReviewsService,
               private shoppingService: ShoppingCartService,
-              private route: ActivatedRoute,) { }
+              private route: ActivatedRoute,
+              private _productSnackBar: MatSnackBar,) { }
 
 
   // On Initialization:
@@ -118,7 +120,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   addToCart(): void
   {
     // Using _purchaseAmount, call insertShoppingCart.
-    this.shoppingService.
-      insertShoppingCart(this.product, this._purchaseAmount);
+    this.shoppingService
+      .insertShoppingCart(this.product, this._purchaseAmount);
+
+    // Open a SnackBar.
+    this._productSnackBar
+      .open("Added " + this._purchaseAmount + " product(s).",
+            "Dismiss", { duration: 1500 });
   }
 }
