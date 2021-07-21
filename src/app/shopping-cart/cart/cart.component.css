@@ -24,12 +24,8 @@
 #wrapper
 {
   padding: 20px;
-}
-
-/* CSS for CartCard */
-#cart_card
-{
-  min-height: 50%;
+  min-height: 65%;
+  height: fit-content;
 }
 
 /* CSS for the Table */
@@ -59,6 +55,12 @@ th
 {
   font-size: large;
   color: black;
+}
+
+/* CSS for button */
+button
+{
+  margin: 10px;
 }
 
 

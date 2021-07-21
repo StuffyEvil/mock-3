@@ -34,7 +34,7 @@
      id="wrapper" class="background accent">
 
   <!-- Mat-Card -->
-  <mat-card id="cart_card">
+  <mat-card>
 
     <!-- Mat-Title -->
     <mat-card-title class="font">
@@ -44,20 +44,22 @@
     <!-- Mat-Card Content -->
     <mat-card-content class="font">
 
+      <hr color="primary">
+
       <!-- Mat Table to display shopping list -->
-      <table mat-table [dataSource]="cart"
+      <table mat-table [dataSource]="cart.purchases"
              class="mat-elevation-z5">
 
         <!-- Image Column -->
         <ng-container matColumnDef="imageUrl">
           <th class="background primary"
               mat-header-cell *matHeaderCellDef>Image</th>
-          <td mat-cell *matCellDef="let product of cart.products">
-            <a [routerLink]="['/products', product.id]"
+          <td mat-cell *matCellDef="let purchase of purchases">
+            <a [routerLink]="['/products', purchase.product.id]"
                routerLinkActive="active">
               <img alt="No Image Found" class="image"
-                   [src]="product.imageUrl"
-                   [title]="product.productName">
+                   [src]="purchase.product.imageUrl"
+                   [title]="purchase.product.productName">
             </a>
           </td>
         </ng-container>
@@ -66,10 +68,10 @@
         <ng-container matColumnDef="productName">
           <th class="background primary"
               mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let product of cart.products">
-            <a [routerLink]="['/products', product.id]"
+          <td mat-cell *matCellDef="let purchase of purchases">
+            <a [routerLink]="['/products', purchase.product.id]"
                routerLinkActive="active">
-              {{product.productName}}
+              {{purchase.product.productName}}
             </a>
           </td>
         </ng-container>
@@ -78,8 +80,8 @@
         <ng-container matColumnDef="amount">
           <th class="background primary"
               mat-header-cell *matHeaderCellDef>Amount</th>
-          <td mat-cell *matCellDef="let amount of cart.amount">
-            {{amount}}
+          <td mat-cell *matCellDef="let purchase of purchases">
+            {{purchase.amount}}
           </td>
         </ng-container>
 
@@ -87,10 +89,10 @@
         <ng-container matColumnDef="cost">
           <th class="background primary"
               mat-header-cell *matHeaderCellDef>Cost</th>
-          <td mat-cell *matCellDef="let amount of cart.amount,
-                                    let price of cart.products.price">
+          <td mat-cell *matCellDef="let purchase of purchases">
             <!-- Use a pipe to limit to 2 decimal places -->
-            ${{(amount * price) | number: '1.2-2'}}
+            ${{(purchase.amount * purchase.product.price)
+                  | number: '1.2-2'}}
           </td>
         </ng-container>
 
@@ -98,11 +100,11 @@
         <ng-container matColumnDef="remove">
           <th class="background primary"
               mat-header-cell *matHeaderCellDef>Remove</th>
-          <td mat-cell *matCellDef="let product of cart.products,
-                                    let amount of cart.amount">
+          <td mat-cell *matCellDef="let purchase of purchases">
             <!-- Add button for removal -->
-            <button mat-mini-fab color="primary"
-                    (click)="removeShoppingCart(product, amount)">
+            <button mat-icon-button color="primary"
+                    (click)="removeShoppingCart(
+                      purchase.product, purchase.amount)">
               <mat-icon>clear</mat-icon>
             </button>
           </td>
@@ -114,6 +116,10 @@
         <tr mat-row *matRowDef="let row; columns: rowTable;"></tr>
 
       </table>
+
+      <hr color="primary">
+
+      <h4 class="font">Total: ${{cart.total | number: '1.2-2'}}</h4>
 
     </mat-card-content>
   </mat-card>
