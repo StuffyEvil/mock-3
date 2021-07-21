@@ -42,7 +42,9 @@
   <!-- Shopping Cart Icon -->
   <div id="shopping_cart">
     <a [routerLink]="['/shopping-cart']" routerLinkActive="active">
-      <button mat-mini-fab>
+      <button mat-mini-fab
+              [matBadge]="cart.num_of_products"
+              matBadgePosition="after" matBadgeColor="warn">
         <mat-icon aria-hidden="false" aria-label="icon">
           shopping_cart
         </mat-icon>

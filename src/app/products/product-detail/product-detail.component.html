@@ -55,7 +55,9 @@
 
               <mat-form-field appearance="outline" color="primary">
                 <mat-label>Quantity:</mat-label>
-                <input type="number" matInput>
+                <input type="number" matInput
+                       [(ngModel)]="purchaseAmount"
+                       >
                 <mat-error
                   *ngIf="purchaseFormControl.hasError('required') ||
                          purchaseFormControl.hasError('min')">
