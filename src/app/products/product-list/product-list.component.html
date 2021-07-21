@@ -17,14 +17,16 @@
       <div class="row">
 
         <!-- Fitering Input -->
-        <mat-form-field appearance="outline" color="primary" class="input">
+        <mat-form-field appearance="outline"
+                        color="primary" class="input">
           <mat-label>Filter By:</mat-label>
           <input type="text" matInput
                  placeholder="E.x. Tea" [(ngModel)]="listFilter">
         </mat-form-field>
 
         <!-- Category Filter Input -->
-        <mat-form-field appearance="outline" color="primary" class="input">
+        <mat-form-field appearance="outline"
+                        color="primary" class="input">
           <mat-label>Category Sorting:</mat-label>
           <mat-select [(value)]="selectedCategory">
             <mat-option value="0">All</mat-option>
@@ -57,7 +59,8 @@
               <a [routerLink]="['/products', product.id]"
                  routerLinkActive="active">
                 <img alt="No Image Found" class="image"
-                     [src]="product.imageUrl" [title]="product.productName">
+                     [src]="product.imageUrl"
+                     [title]="product.productName">
               </a>
             </td>
           </ng-container>

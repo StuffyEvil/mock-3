@@ -29,7 +29,7 @@ export class CartComponent implements OnInit, OnDestroy
 
   // Column Order for Angular Material Table:
   rowTable: string[] = ['imageUrl', 'productName', 'amount',
-                        'cost']
+                        'cost', 'remove']
 
 
   // Constructor:

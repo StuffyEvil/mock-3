@@ -26,7 +26,34 @@
   padding: 20px;
 }
 
-/* CSS for Card */
+/* CSS for the Table */
+table
+{
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* CSS for images */
+.image
+{
+  height: 125px;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+/* CSS for th & td element */
+th, td
+{
+  font-family: 'Times New Roman', Times, serif;
+}
+th
+{
+  font-size: large;
+  color: black;
+}
 
 
 
