@@ -34,7 +34,7 @@
      id="wrapper" class="background accent">
 
   <!-- Mat-Card -->
-  <mat-card>
+  <mat-card id="cart_card">
 
     <!-- Mat-Title -->
     <mat-card-title class="font">
@@ -45,7 +45,8 @@
     <mat-card-content class="font">
 
       <!-- Mat Table to display shopping list -->
-      <table mat-table [dataSource]="cart" class="mat-elevation-z5">
+      <table mat-table [dataSource]="cart"
+             class="mat-elevation-z5">
 
         <!-- Image Column -->
         <ng-container matColumnDef="imageUrl">
@@ -55,7 +56,8 @@
             <a [routerLink]="['/products', product.id]"
                routerLinkActive="active">
               <img alt="No Image Found" class="image"
-                   [src]="product.imageUrl" [title]="product.productName">
+                   [src]="product.imageUrl"
+                   [title]="product.productName">
             </a>
           </td>
         </ng-container>

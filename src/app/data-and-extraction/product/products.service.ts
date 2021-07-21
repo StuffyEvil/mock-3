@@ -6,6 +6,7 @@ import { catchError, tap, map, shareReplay } from 'rxjs/operators';
 
 import { Product } from './product';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,13 +15,13 @@ export class ProductsService
   // Obtain the Product Data.
   private productsUrl = 'api/products';
 
-  // Inject that HttpClient
+  // Inject that HttpClient.
   constructor(private http: HttpClient) { }
 
 
   // Product Getters:
 
-  // All Products
+  // All Products:
   getProducts(): Observable<Product[]>
   {
     return this.http.get<Product[]>(this.productsUrl)
@@ -31,7 +32,7 @@ export class ProductsService
       );
   }
 
-  // A single Product
+  // A single Product:
   getProduct(id: number): Observable<Product>
   {
     if (id === 0)
@@ -50,7 +51,7 @@ export class ProductsService
   }
 
 
-  // HandleError
+  // HandleError:
   private handleError(err)
   {
     // Normally this would be a lot more fancy, logging errors into a
@@ -76,10 +77,10 @@ export class ProductsService
   }
 
 
-  // Initializing Product
+  // Initializing Product:
   private initializeProduct(): Product
   {
-    // Return an initialized object
+    // Return an initialized object.
     return {
       id: 0,
       productName: null,

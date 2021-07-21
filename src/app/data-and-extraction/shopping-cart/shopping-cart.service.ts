@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, shareReplay, tap } from 'rxjs/operators';
 import { Product } from '../product/product';
-import { ShoppingCart } from './shopping-cart';
+import { Purchase, ShoppingCart } from './shopping-cart';
 
 
 @Injectable({
@@ -16,8 +16,7 @@ export class ShoppingCartService
   // Field to hold a shopping cart.
   cart: ShoppingCart =
   {
-    "products": [],
-    "amount": [],
+    "purchases": [],
     "total": 0,
     "num_of_products": 0,
   };
@@ -33,6 +32,8 @@ export class ShoppingCartService
     // Just return cart.
     return of(this.cart)
       .pipe(
+        tap(data => console.log('getShoppingCart: ' + JSON.stringify(data))),
+        catchError(this.handleError),
         shareReplay(1),
       );
   }
@@ -42,23 +43,26 @@ export class ShoppingCartService
   // Takes in Product and number as argument to add them to the cart.
   insertShoppingCart(product: Product, amount: number): void
   {
-    // Use indexOf to find if Product is already in the array.
-    var index: number = this.cart.products.indexOf(product);
+    // Use findIndex to find if Product is already in the array.
+    var index: number = this.cart.purchases.findIndex(
+      (purchase) => purchase.product == product );
 
 
     // If index is -1, then use push to insert the Product and amount.
     if (index == -1)
     {
+      // Create a new Purchase to be pushed.
+      var insert: Purchase = { "product": product, "amount": amount };
+
       // Insert accordingly.
-      this.cart.products.push(product);
-      this.cart.amount.push(amount);
+      this.cart.purchases.push(insert);
     }
 
     // Else, add amount to the respective value.
     else
     {
       // Add accordingly.
-      this.cart.amount[index] += amount;
+      this.cart.purchases[index].amount += amount;
     }
 
     // Update total & num_of_products.
@@ -71,29 +75,56 @@ export class ShoppingCartService
   // Takes in Product and number as argument to add them to the cart.
   removeShoppingCart(product: Product, amount: number): void
   {
-    // Use indexOf to find the Product and remove amount accordingly.
+    // Use findIndex to find if Product is already in the array.
     // Note that it's impossible to not get a hit as the remove function
     // can only be conducted on elements in cart.
-    var index: number = this.cart.products.indexOf(product);
+    var index: number = this.cart.purchases.findIndex(
+      (purchase) => purchase.product == product );
 
 
     // Update total & num_of_products.
-    this.cart.total -= this.cart.amount[index] * product.price;
+    this.cart.total -= this.cart.purchases[index].amount * product.price;
     this.cart.num_of_products -= amount;
 
     // If amount is equal or greater than the amount in the cart.
-    if (amount >= this.cart.amount[index])
+    if (amount >= this.cart.purchases[index].amount)
     {
-      // Remove the respective value in both product and amount.
-      this.cart.products.splice(index, 1);
-      this.cart.amount.splice(index,1);
+      // Remove the respective value in purchase.
+      this.cart.purchases.splice(index, 1);
     }
 
     // Else, just subtract accordingly.
     else
     {
       // Remove amount.
-      this.cart.amount[index] -= amount;
+      this.cart.purchases[index].amount -= amount;
     }
   }
+
+
+  // HandleError:
+  private handleError(err)
+  {
+    // Normally this would be a lot more fancy, logging errors into a
+    // remote database instead of only to console.
+    let errorMessage: string;
+
+    if (err.error instanceof ErrorEvent)
+    {
+      // Handle client-side / network error.
+      errorMessage = `An error occurred: ${err.error.message}`;
+    }
+
+    else
+    {
+      // The backend returned an unsuccessful response code.
+      // Returned message may give an idea of the reason for error.
+      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
+    }
+
+    console.error(err);
+    // Return accordingly
+    return throwError(errorMessage);
+  }
+
 }

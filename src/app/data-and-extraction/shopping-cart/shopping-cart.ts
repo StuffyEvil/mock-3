@@ -1,13 +1,22 @@
 import { Product } from "../product/product";
 
-// Interface for a Shopping Cart
+
+// Interface for a Product-Amount pair:
+export interface Purchase
+{
+  // Product:
+  product: Product;
+
+  // Amount:
+  amount: number;
+}
+
+
+// Interface for a Shopping Cart:
 export interface ShoppingCart
 {
-  // Array to hold Product(s):
-  products: Product[];
-
-  // Array to hold the amount of Product(s) of the corresponding index.
-  amount: number[];
+  // Array to hold Purchases(s):
+  purchases: Purchase[];
 
   // Sum of the Cost ~ this will be updated regularly:
   total: number;

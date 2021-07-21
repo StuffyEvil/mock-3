@@ -26,6 +26,12 @@
   padding: 20px;
 }
 
+/* CSS for CartCard */
+#cart_card
+{
+  min-height: 50%;
+}
+
 /* CSS for the Table */
 table
 {
