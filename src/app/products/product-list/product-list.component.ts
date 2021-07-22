@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, EMPTY, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, combineLatest, EMPTY, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CategoriesService } from 'src/app/data-and-extraction/category/categories.service';
 import { Category } from 'src/app/data-and-extraction/category/category';
@@ -37,7 +37,6 @@ export class ProductListComponent implements OnInit, OnDestroy
   productsObs$: Observable<Product[]>;
 
 
-
   // Categories:
 
   // Will have a field to make filtering process later easier.
@@ -46,6 +45,7 @@ export class ProductListComponent implements OnInit, OnDestroy
 
   // Category Observable:
   categoriesObs$: Observable<Category[]>;
+
   // Category Subscription:
   categoriesSub$;
 
@@ -56,8 +56,10 @@ export class ProductListComponent implements OnInit, OnDestroy
 
   // An Observable that have multiple things combined together.
   superCombine$;
+
   // superCombine Subscription:
   superSub$;
+
 
 
   // Column Order for Angular Material Table:
@@ -144,7 +146,10 @@ export class ProductListComponent implements OnInit, OnDestroy
         // Signal Flares:
         console.log("Testing 1:", JSON.stringify(products));
         console.log("Testing 2:", JSON.stringify(filter));
-        console.log("Testing 3", JSON.stringify(category));
+        console.log("Testing 3:", JSON.stringify(category));
+
+
+        return ([products, filter, category]);
       }),
       catchError(err => {
         // Lob it into console.
@@ -153,12 +158,19 @@ export class ProductListComponent implements OnInit, OnDestroy
       }),
     );
 
+
+    // superCombine Subscription:
     this.superSub$ = this.superCombine$.subscribe({
-      next: output => {
+      next: ([products, filter, category]) =>
+      {
+        console.log("Super Combine Output:",
+          JSON.stringify([products, filter, category]));
+
         // An empty subscription basically.
         // This will proc the map stuff above and have the filtered
         // products be loaded in.
         // Is there probably a better way to do this? Yeah ...
+        this.filteredProducts = products;
       }
     })
   }
