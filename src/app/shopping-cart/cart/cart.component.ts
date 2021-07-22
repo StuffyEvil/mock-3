@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, EMPTY, Observable, } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { ShoppingCart } from 'src/app/data-and-extraction/shopping-cart/shopping-cart';
 import { ShoppingCartService } from 'src/app/data-and-extraction/shopping-cart/shopping-cart.service';
 
@@ -24,20 +23,8 @@ export class CartComponent implements OnInit, OnDestroy
   // cart:
   cart: ShoppingCart;
 
-
-  // Remove Button Behaviour:
-  // Value that the Behaviour passes is irrelevant, the important thing is
-  // to shoot a signal flare that a change has occured.
-  private removeSubject = new BehaviorSubject<number>(0);
-  removeAction$ = this.removeSubject.asObservable();
-
-
-  // An Observable that combines ShoppingCart & removeAction.
-  superCombine$;
-
-  // superCombine Subscription:
-  superSub$;
-
+  // shoppingService Subscription:
+  shoppingSub$;
 
 
   // Column Order for Angular Material Table:
@@ -56,30 +43,17 @@ export class CartComponent implements OnInit, OnDestroy
     // Set up the Shopping Cart Observable.
     this.shoppingObs$ = this.shoppingService.getShoppingCart();
 
-
-    // Setup superCombine:
-    this.superCombine$ = combineLatest([
-      this.shoppingObs$,
-      this.removeAction$,
-    ]).pipe(
-      catchError(err => {
-        // Lob it into console.
-        console.log("Something went wrong with combine.");
-        return EMPTY;
-      })
-    );
-
-
-    // Set up superCombine Subscription:
-    this.superSub$ = this.superCombine$.subscribe({
-      next: ([output1, output2]) =>
+    // Setup Subscription:
+    this.shoppingSub$ = this.shoppingObs$.subscribe(
+    {
+      next: cart =>
       {
-        // Console Output:
-        console.log("SuperCombine Output:", JSON.stringify(output1));
+        this.cart = cart;
 
-        // Set cart accordingly.
-        this.cart = output1;
-      }
+        // Console Logs:
+        console.log("Shopping Cart:", JSON.stringify(cart));
+      },
+      error: err => this.errorMessage = err
     })
   }
 
@@ -88,7 +62,7 @@ export class CartComponent implements OnInit, OnDestroy
   ngOnDestroy(): void
   {
     // Unsubscribe from shopping.
-    this.superSub$.unsubscribe();
+    this.shoppingSub$.unsubscribe();
   }
 
 }

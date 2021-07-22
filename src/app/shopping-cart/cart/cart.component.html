@@ -103,7 +103,7 @@
           <td mat-cell *matCellDef="let purchase">
             <!-- Add button for removal -->
             <button mat-icon-button color="primary"
-                    (click)="removeShoppingCart(
+                    (click)="shoppingService.removeShoppingCart(
                       purchase.product, purchase.amount)">
               <mat-icon>clear</mat-icon>
             </button>
