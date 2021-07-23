@@ -128,6 +128,8 @@
     "no-host-metadata-property": true,
     "no-input-rename": true,
     "no-inputs-metadata-property": true,
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
     "no-output-native": true,
     "no-output-on-prefix": true,
     "no-output-rename": true,

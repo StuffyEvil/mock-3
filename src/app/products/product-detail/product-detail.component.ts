@@ -33,6 +33,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   // # of Products to add:
   _purchaseAmount: number;
 
+
+
   // Set up a small FormControl:
   // Since it's so small there's no need to do anything elaborate, as
   // we are only concerned if # of product isn't 0 or null.
@@ -41,6 +43,21 @@ export class ProductDetailComponent implements OnInit, OnDestroy
     Validators.required,
     Validators.min(1),
   ]);
+
+  purchaseFormSub$;
+
+  // Form Error messages:
+  formErrorMessage(): string
+  {
+    // If error is required:
+    if (this.purchaseFormControl.hasError('required'))
+    {
+      return "Please enter in a number.";
+    }
+
+    // Else
+    return "Please enter in a number at least 1."
+  }
 
 
 
@@ -71,15 +88,30 @@ export class ProductDetailComponent implements OnInit, OnDestroy
     // This should return the type Reviews.
     this.reviewsSub$ =
       this.reviewService.getReviews(this.product.id).subscribe(
+      {
+        next: reviews =>
         {
-          next: reviews =>
-          {
-            this.source = reviews;
-            this.reviews = this.source.reviews;
-          },
-          error: err => this.errorMessage = err
-        }
+          this.source = reviews;
+          this.reviews = this.source.reviews;
+        },
+        error: err => this.errorMessage = err
+      }
     );
+
+
+    // Subscribe to purchaseFormControl.
+    this.purchaseFormSub$ = this.purchaseFormControl.valueChanges.subscribe(
+      {
+        next: value =>
+        {
+          // Console Log:
+          console.log("Product Amount:", value);
+
+          // Set purchaseAmount accordingly.
+          this._purchaseAmount = value;
+        }
+      }
+    )
 
   }
 

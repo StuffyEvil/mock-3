@@ -52,19 +52,15 @@
           <div>
 
             <!-- Input for Amount -->
-
-              <mat-form-field appearance="outline" color="primary">
-                <mat-label>Quantity:</mat-label>
-                <input type="number" matInput
-                       [(ngModel)]="purchaseAmount"
-                       >
-                <mat-error
-                  *ngIf="purchaseFormControl.hasError('required') ||
-                         purchaseFormControl.hasError('min')">
-                  Please enter a valid amount.
-                </mat-error>
-              </mat-form-field>
-
+            <mat-form-field appearance="outline" color="primary">
+              <mat-label>Quantity:</mat-label>
+              <input type="number" matInput placeholder="1"
+                     onchange="purchaseFormControl.setValue(value)"
+                     required>
+              <mat-error *ngIf="purchaseFormControl.invalid">
+                {{formErrorMessage()}}
+              </mat-error>
+            </mat-form-field>
 
             <!-- Add to Shopping Cart Button -->
             <button mat-raised-button color="primary"
