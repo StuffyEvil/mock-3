@@ -33,11 +33,19 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   // # of Products to add:
   _purchaseAmount: number;
 
+  // Add booleans for error checking.
+  // I am using this cause I give up on making fancy forms stuff.
+  amountIsNull: boolean = true;
+  amountAtLeast1: boolean = true;
+  amountIsInt: boolean = true;
+
 
 
   // Set up a small FormControl:
   // Since it's so small there's no need to do anything elaborate, as
   // we are only concerned if # of product isn't 0 or null.
+
+  /*
   purchaseFormControl = new FormControl(1,
   [
     Validators.required,
@@ -57,7 +65,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy
 
     // Else
     return "Please enter in a number at least 1."
-  }
+  } */
 
 
 
@@ -100,6 +108,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy
 
 
     // Subscribe to purchaseFormControl.
+
+    /*
     this.purchaseFormSub$ = this.purchaseFormControl.valueChanges.subscribe(
       {
         next: value =>
@@ -111,7 +121,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy
           this._purchaseAmount = value;
         }
       }
-    )
+    ) */
 
   }
 
@@ -155,6 +165,51 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   {
     // Set accordingly.
     this._purchaseAmount = amount;
+
+
+    // Do some manual checking.
+
+    // Check if purchaseAmount is null.
+    if (this._purchaseAmount === null)
+    {
+      this.amountIsNull = true;
+      this.amountAtLeast1 = false;
+      this.amountIsInt = false;
+    }
+
+    // Else, amountIsNull will be false.
+    else
+    {
+      this.amountIsNull = false;
+
+      // Now test the others.
+
+
+      // Check if purchaseAmount is at least 1.
+      if (this._purchaseAmount >= 1)
+      {
+        this.amountAtLeast1 = true;
+      }
+
+      // Else ...
+      else
+      {
+        this.amountAtLeast1 = false;
+      }
+
+
+      // Check if purchaseAmount is an integer.
+      if (Number.isInteger(this._purchaseAmount))
+      {
+        this.amountIsInt = true;
+      }
+
+      // Else ...
+      else
+      {
+        this.amountIsInt = false;
+      }
+    }
   }
 
 
