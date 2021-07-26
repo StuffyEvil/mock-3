@@ -71,25 +71,12 @@
 
               <!-- Error stuff -->
 
-              <mat-error *ngIf="amountIsNull">
-                Enter in a valid value.
-              </mat-error>
-
-              <mat-error *ngIf="!amountIsNull && !amountAtLeast1">
-                Number needs to be at least 1.
-              </mat-error>
-
-              <mat-error *ngIf="!amountIsNull && !amountIsInt">
-                Number needs to be an Integer.
-              </mat-error>
-
             </mat-form-field>
 
             <!-- Add to Shopping Cart Button -->
             <button mat-raised-button color="primary"
                     (click)="addToCart()"
-                    [disabled]="amountIsNull || !amountAtLeast1
-                                || !amountIsInt">
+                    >
               Add to Shopping Cart
             </button>
 
