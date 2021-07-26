@@ -89,7 +89,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy
 
 
     // Subscribe to purchaseFormControl.
-
     this.purchaseFormSub$ = this.purchaseFormControl.valueChanges.subscribe(
       {
         next: value =>
@@ -111,6 +110,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   {
     // Unsubscribe from ReviewsService.
     this.reviewsSub$.unsubscribe();
+
+    // Unsubscribe from purchaseFormControl.valueChanges.
+    this.purchaseFormSub$.unsubscribe();
   }
 
 
