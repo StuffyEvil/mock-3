@@ -23,6 +23,4 @@ export class GeneralValidators
     }
   }
 
-  // Null Validator
-  static notNull
 }
