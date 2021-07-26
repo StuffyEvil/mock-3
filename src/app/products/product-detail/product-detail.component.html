@@ -53,30 +53,30 @@
 
             <!-- Input for Amount -->
             <mat-form-field appearance="outline" color="primary">
+
               <mat-label>Quantity:</mat-label>
 
-              <!--
-                It's not working AAHAAHHAHAHAHAHAHA
-
-              <input type="number" matInput placeholder="1"
-                     onchange="purchaseFormControl.setValue(value)"
-                     required>
-              <mat-error *ngIf="purchaseFormControl.invalid">
-                {{formErrorMessage()}}
-              </mat-error> -->
-
               <!-- "It works" Version -->
-              <input type="number" matInput
-                     [(ngModel)]="purchaseAmount">
+              <input type="number" matInput required
+                     [placeholder]="1"
+                     [formControl]="purchaseFormControl">
 
               <!-- Error stuff -->
+
+              <mat-error *ngIf="purchaseFormControl.hasError('required')">
+                Please enter in an amount.
+              </mat-error>
+
+              <mat-error *ngIf="!purchaseFormControl.hasError('')">
+
+              </mat-error>
 
             </mat-form-field>
 
             <!-- Add to Shopping Cart Button -->
             <button mat-raised-button color="primary"
                     (click)="addToCart()"
-                    >
+                    [disabled]="!purchaseFormControl.valid">
               Add to Shopping Cart
             </button>
 

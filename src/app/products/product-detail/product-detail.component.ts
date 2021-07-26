@@ -6,6 +6,7 @@ import { Product, ProductResolved } from 'src/app/data-and-extraction/product/pr
 import { Review, Reviews } from 'src/app/data-and-extraction/review/review';
 import { ReviewsService } from 'src/app/data-and-extraction/review/reviews.service';
 import { ShoppingCartService } from 'src/app/data-and-extraction/shopping-cart/shopping-cart.service';
+import { GeneralValidators } from 'src/app/shared/general-validator';
 
 @Component({
   selector: 'app-product-detail',
@@ -42,6 +43,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   [
     Validators.required,
     Validators.min(1),
+    GeneralValidators.notInt(),
   ]);
 
   purchaseFormSub$;
