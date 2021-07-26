@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy
 
 
   // # of Products to add:
-  _purchaseAmount: number;
+  _purchaseAmount: number = 1;
 
 
   // Set up a small FormControl:

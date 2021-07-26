@@ -49,15 +49,14 @@
 
 
           <!-- Add to Shopping Cart -->
-          <div>
 
-            <!-- Input for Amount -->
-            <mat-form-field appearance="outline" color="primary">
+          <!-- Input for Amount -->
+          <mat-form-field appearance="outline" color="primary">
 
-              <mat-label>Quantity:</mat-label>
+            <mat-label>Quantity:</mat-label>
 
-              <!-- "It works" Version -->
-              <input type="number" matInput required
+            <!-- "It works" Version -->
+            <input type="number" matInput required
                      [placeholder]="1"
                      [formControl]="purchaseFormControl">
 
@@ -67,8 +66,14 @@
                 Please enter in an amount.
               </mat-error>
 
-              <mat-error *ngIf="!purchaseFormControl.hasError('')">
+              <mat-error *ngIf="!purchaseFormControl.hasError('required')
+                              && purchaseFormControl.hasError('min')">
+                Please enter in an amount at least 1.
+              </mat-error>
 
+              <mat-error *ngIf="!purchaseFormControl.hasError('required')
+                              && purchaseFormControl.hasError('notInt')">
+                Please enter in an integer.
               </mat-error>
 
             </mat-form-field>
@@ -80,7 +85,8 @@
               Add to Shopping Cart
             </button>
 
-          </div>
+
+
 
 
         </div>
