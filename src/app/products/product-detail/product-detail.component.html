@@ -55,37 +55,34 @@
 
             <mat-label>Quantity:</mat-label>
 
-            <!-- "It works" Version -->
+            <!-- Input -->
             <input type="number" matInput required
                    [placeholder]="1" [formControl]="purchaseFormControl">
 
-              <!-- Error stuff -->
+            <!-- Error stuff -->
 
-              <mat-error *ngIf="purchaseFormControl.hasError('required')">
-                Please enter in an amount.
-              </mat-error>
+            <mat-error *ngIf="purchaseFormControl.hasError('required')">
+              Please enter in an amount.
+            </mat-error>
 
-              <mat-error *ngIf="!purchaseFormControl.hasError('required')
+            <mat-error *ngIf="!purchaseFormControl.hasError('required')
                               && purchaseFormControl.hasError('min')">
-                Please enter in an amount at least 1.
-              </mat-error>
+              Please enter in an amount at least 1.
+            </mat-error>
 
-              <mat-error *ngIf="!purchaseFormControl.hasError('required')
+            <mat-error *ngIf="!purchaseFormControl.hasError('required')
                               && purchaseFormControl.hasError('notInt')">
-                Please enter in an integer.
-              </mat-error>
+              Please enter in an integer.
+            </mat-error>
 
-            </mat-form-field>
+          </mat-form-field>
 
-            <!-- Add to Shopping Cart Button -->
-            <button mat-raised-button color="primary"
-                    (click)="addToCart()"
-                    [disabled]="!purchaseFormControl.valid">
-              Add to Shopping Cart
-            </button>
-
-
-
+          <!-- Add to Shopping Cart Button -->
+          <button mat-raised-button color="primary"
+                  (click)="addToCart()"
+                  [disabled]="!purchaseFormControl.valid">
+            Add to Shopping Cart
+          </button>
 
 
         </div>

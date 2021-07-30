@@ -37,8 +37,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy
 
   // Set up a small FormControl:
   // Since it's so small there's no need to do anything elaborate, as
-  // we are only concerned if # of product isn't 0 or null.
-
+  // we are only concerned if # of product is null, at least 1 or an Int.
   purchaseFormControl = new FormControl(1,
   [
     Validators.required,
@@ -46,6 +45,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy
     GeneralValidators.notInt(),
   ]);
 
+  // Holds the purchaseForm.valueChanges subscription.
   purchaseFormSub$;
 
 

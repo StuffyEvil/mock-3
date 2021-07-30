@@ -82,22 +82,29 @@ export class ShoppingCartService
       (purchase) => purchase.product == product );
 
 
-    // Update total & num_of_products.
-    this.cart.total -= this.cart.purchases[index].amount * product.price;
-    this.cart.num_of_products -= amount;
-
     // If amount is equal or greater than the amount in the cart.
     if (amount >= this.cart.purchases[index].amount)
     {
+      // Update total & num_of_products.
+      this.cart.total -= this.cart.purchases[index].amount * product.price;
+      this.cart.num_of_products -= this.cart.purchases[index].amount;
+
       // Remove the respective value in purchase.
       this.cart.purchases.splice(index, 1);
+
+      console.log(this.cart);
     }
+
 
     // Else, just subtract accordingly.
     else
     {
       // Remove amount.
       this.cart.purchases[index].amount -= amount;
+
+      // Update total & num_of_products.
+      this.cart.total -= amount * product.price;
+      this.cart.num_of_products -= amount;
     }
   }
 
