@@ -21,6 +21,14 @@ export class ShoppingCartService
     "num_of_products": 0,
   };
 
+  // Observable of that cart.
+  cartObservable: Observable<ShoppingCart> = of(this.cart)
+    .pipe(
+      tap(data => console.log('getShoppingCart: ' + JSON.stringify(data))),
+      catchError(this.handleError),
+      shareReplay(1),
+    );
+
 
   // Inject ze HttpClient!
   constructor(private http: HttpClient) {}
@@ -30,12 +38,7 @@ export class ShoppingCartService
   getShoppingCart(): Observable<ShoppingCart>
   {
     // Just return cart.
-    return of(this.cart)
-      .pipe(
-        tap(data => console.log('getShoppingCart: ' + JSON.stringify(data))),
-        catchError(this.handleError),
-        shareReplay(1),
-      );
+    return this.cartObservable;
   }
 
 
@@ -43,6 +46,8 @@ export class ShoppingCartService
   // Takes in Product and number as argument to add them to the cart.
   insertShoppingCart(product: Product, amount: number): void
   {
+    console.log("Shopping Cart Adding");
+
     // Use findIndex to find if Product is already in the array.
     var index: number = this.cart.purchases.findIndex(
       (purchase) => purchase.product == product );
@@ -75,6 +80,8 @@ export class ShoppingCartService
   // Takes in Product and number as argument to add them to the cart.
   removeShoppingCart(product: Product, amount: number): void
   {
+    console.log("Shopping Cart Removing");
+
     // Use findIndex to find if Product is already in the array.
     // Note that it's impossible to not get a hit as the remove function
     // can only be conducted on elements in cart.
@@ -106,6 +113,7 @@ export class ShoppingCartService
       this.cart.total -= amount * product.price;
       this.cart.num_of_products -= amount;
     }
+
   }
 
 

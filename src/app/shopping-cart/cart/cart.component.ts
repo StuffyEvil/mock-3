@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormControl, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormArray, FormControl } from '@angular/forms';
+import { MatTable } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/data-and-extraction/product/product';
 import { Purchase, ShoppingCart } from 'src/app/data-and-extraction/shopping-cart/shopping-cart';
@@ -16,6 +17,14 @@ export class CartComponent implements OnInit, OnDestroy
 {
   /* --- Fields --- */
 
+
+  @ViewChild(MatTable) table: MatTable<Purchase>
+
+  // Column Order for Angular Material Table:
+  rowTable: string[] = ['imageUrl', 'productName',
+                        'amount', 'cost', 'remove']
+
+
   // Error Message to store errors.
   errorMessage = '';
 
@@ -29,17 +38,12 @@ export class CartComponent implements OnInit, OnDestroy
   // shoppingService Subscription:
   shoppingSub$;
 
+  // Shopping Cart String:
+  shoppingCartString: string;
+
 
   // Set up FormControl array.
   formArray: FormArray;
-
-  // # of unique Products in the cart.
-  numOfUProducts: number = 0;
-
-
-  // Column Order for Angular Material Table:
-  rowTable: string[] = ['imageUrl', 'productName', 'amount',
-                        'cost', 'remove']
 
 
 
@@ -51,6 +55,15 @@ export class CartComponent implements OnInit, OnDestroy
   // On Initialization:
   ngOnInit(): void
   {
+    // Set up formArray.
+
+    // Set up insert.
+    var formInsert: FormControl[] = [];
+
+    // Construct new formArray.
+    this.formArray = new FormArray(formInsert);
+
+
     // Set up the Shopping Cart Observable.
     this.shoppingObs$ = this.shoppingService.getShoppingCart();
 
@@ -59,11 +72,11 @@ export class CartComponent implements OnInit, OnDestroy
     {
       next: cart =>
       {
+        // Console Logs:
+        console.log("next:");
+
         // Set Cart:
         this.cart = cart;
-
-        // Set amount of unique products:
-        this.numOfUProducts = cart.purchases.length;
 
         // Call assembleForms:
         this.assembleForms();
@@ -95,25 +108,36 @@ export class CartComponent implements OnInit, OnDestroy
 
     // Set up arrayFormControl accordingly.
 
-    // Set up insert.
-    var formInsert: FormControl[] = [];
+    // Obtain the difference between the length of formArray and # of
+    // unique products.
+    var difference: number = this.formArray.length
+                              - this.cart.purchases.length;
 
-    // If formArray has stuff, clear it.
-    if(this.formArray)
+
+    // If difference is negative, add FormControl(s).
+    if (difference < 0)
     {
-      this.formArray.clear;
+      // Add FormControls to formArray.
+      for (let loop = 0; loop < difference * -1; ++ loop)
+      {
+        this.formArray.push(new FormControl(1, [
+          GeneralValidators.notInt(),
+        ]));
+      }
     }
 
-    // Construct new formArray.
-    this.formArray = new FormArray(formInsert);
 
-
-    for (let loop = 0; loop < this.numOfUProducts; ++ loop)
+    // Else if, difference is positive, remove FormControl(s).
+    if (difference > 0)
     {
-      this.formArray.push(new FormControl(1, [
-        GeneralValidators.notInt(),
-      ]));
+      // Remove FormControls from formArray.
+      for (let loop = 0; loop < difference; ++ loop)
+      {
+        this.formArray.removeAt(0);
+      }
     }
+
+    // Else, difference is 0, do nothing.
 
 
     // Console Logs:
@@ -121,9 +145,9 @@ export class CartComponent implements OnInit, OnDestroy
 
 
     // Now align the values between the cart and the array.
-    for (let loop = 0; loop < this.numOfUProducts; ++ loop)
+    for (let loop = 0; loop < this.cart.purchases.length; ++ loop)
     {
-      this.formArray[loop].setValue(this.cart.purchases[loop].amount);
+      this.formArray.at(loop).setValue(this.cart.purchases[loop].amount);
     }
   }
 
@@ -134,7 +158,7 @@ export class CartComponent implements OnInit, OnDestroy
   onAmountChange(product: Product,  purchase: Purchase): void
   {
     // Obtain the index and the corresponding value.
-    var amount: number = this.formArray[this.index(purchase)].value;
+    var amount: number = this.formArray.at(this.index(purchase)).value;
 
 
     // Console Logs:
@@ -144,7 +168,14 @@ export class CartComponent implements OnInit, OnDestroy
     // If amount is null then just remove the product.
     if (amount === null)
     {
+      // Remove product.
       this.shoppingService.removeShoppingCart(product, purchase.amount);
+
+      // Updates the amount of forms.
+      this.assembleForms();
+
+      // Updates the table.
+      this.table.renderRows();
     }
 
 
@@ -161,6 +192,15 @@ export class CartComponent implements OnInit, OnDestroy
         // Call removeShoppingCart.
         this.shoppingService.removeShoppingCart(product,
                                 purchase.amount - amount);
+
+        if (amount == 0)
+        {
+          // Updates the amount of forms.
+          this.assembleForms();
+
+          // Updates the table.
+          this.table.renderRows();
+        }
       }
 
 
@@ -184,4 +224,18 @@ export class CartComponent implements OnInit, OnDestroy
   {
     return this.cart.purchases.indexOf(purchase);
   }
+
+
+  removeProduct(product: Product, amount: number): void
+  {
+    // Remove product.
+    this.shoppingService.removeShoppingCart(product, amount);
+
+    // Updates the amount of forms.
+    this.assembleForms();
+
+    // Updates the table.
+    this.table.renderRows();
+  }
+
 }
