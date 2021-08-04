@@ -5,6 +5,7 @@ import { MaterialModule } from '../shared/material.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductResolverService } from '../data-and-extraction/product/product-resolver.service';
+import { NewReviewDialogueComponent } from './product-detail/new-review-dialogue/new-review-dialogue.component';
 
 
 
@@ -12,7 +13,8 @@ import { ProductResolverService } from '../data-and-extraction/product/product-r
   {
   declarations: [
     ProductListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    NewReviewDialogueComponent
   ],
   imports: [
     SharedModule,
