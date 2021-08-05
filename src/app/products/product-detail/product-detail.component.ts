@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Product, ProductResolved } from 'src/app/data-and-extraction/product/product';
@@ -7,6 +8,7 @@ import { Review, Reviews } from 'src/app/data-and-extraction/review/review';
 import { ReviewsService } from 'src/app/data-and-extraction/review/reviews.service';
 import { ShoppingCartService } from 'src/app/data-and-extraction/shopping-cart/shopping-cart.service';
 import { GeneralValidators } from 'src/app/shared/general-validator';
+import { NewReviewDialogueComponent } from './new-review-dialogue/new-review-dialogue.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -56,7 +58,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   constructor(private reviewService: ReviewsService,
               private shoppingService: ShoppingCartService,
               private route: ActivatedRoute,
-              private _productSnackBar: MatSnackBar,) { }
+              private _productSnackBar: MatSnackBar,
+              public newReviewDialogue: MatDialog,) { }
 
 
   // On Initialization:
@@ -150,8 +153,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   }
 
 
-
-  // AddToCart:
+  // addToCart:
+  // Adds the respective amount of the product to the shopping cart.
   addToCart(): void
   {
     // Using _purchaseAmount, call insertShoppingCart.
@@ -161,6 +164,44 @@ export class ProductDetailComponent implements OnInit, OnDestroy
     // Open a SnackBar.
     this._productSnackBar
       .open("Added " + this._purchaseAmount + " product(s).",
-            "Dismiss", { duration: 1500 });
+            "Dismiss", { duration: 500 });
   }
+
+
+  // openNewReviewDialogue:
+  // Opens up a Dialogue to enter a new Review.
+  openNewReviewDialogue(): void
+  {
+    // Console Log:
+    console.log("Opening New Review Dialogue");
+
+    // Local variable:
+    var newReview: Review;
+
+    // Open Dialogue:
+    const newReviewDialogueRef =
+      this.newReviewDialogue.open(NewReviewDialogueComponent,
+    {
+      width: '75%',
+      data: {id: this.product.id}
+    });
+
+    // When the Dialogue closes.
+    newReviewDialogueRef.afterClosed().subscribe(result => {
+      newReview = result;
+    })
+
+
+    // Check if newReview isn't null, which means that the submission for
+    // a new Review was successful.
+    if (newReview)
+    {
+      // Insert the new Review into the "database".
+      this.reviewService.createReview(newReview.id,
+                            newReview.review, newReview.rating);
+    }
+
+    // Else, nothing happens.
+  }
+
 }
