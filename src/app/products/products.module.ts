@@ -3,9 +3,8 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
 import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { NewReviewDialogueComponent, ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductResolverService } from '../data-and-extraction/product/product-resolver.service';
-import { NewReviewDialogueComponent } from './product-detail/new-review-dialogue/new-review-dialogue.component';
 
 
 
@@ -14,7 +13,7 @@ import { NewReviewDialogueComponent } from './product-detail/new-review-dialogue
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
-    NewReviewDialogueComponent
+    NewReviewDialogueComponent,
   ],
   imports: [
     SharedModule,
@@ -32,6 +31,10 @@ import { NewReviewDialogueComponent } from './product-detail/new-review-dialogue
         }
       ]
     )
+  ],
+  entryComponents: [
+    ProductDetailComponent,
+    NewReviewDialogueComponent,
   ]
 })
 export class ProductsModule { }

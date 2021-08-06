@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, Inject, } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Product, ProductResolved } from 'src/app/data-and-extraction/product/product';
