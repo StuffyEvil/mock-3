@@ -102,6 +102,9 @@ export class ReviewsService implements OnDestroy
   // createReview:
   createReview(id: number, review: string, rating: number): void
   {
+    // Console Log:
+    console.log("Creating a New Review");
+
     // Create a Review with the inputs:
     var insert: Review = {
       "id": id,

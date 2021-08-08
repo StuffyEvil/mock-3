@@ -1,4 +1,25 @@
+/* Class for Font */
 .font
 {
   font-family: 'Times New Roman', Times, serif;
+}
+
+/* CSS for forms */
+#forms
+{
+  display: flex;
+  flex-direction: column;
+}
+
+/* CSS for text */
+#review-text
+{
+  width: 100%;
+  height: 50%;
+}
+
+/* CSS for rating */
+#review-rating
+{
+  width: fit-content;
 }

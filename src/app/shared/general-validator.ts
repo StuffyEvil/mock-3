@@ -4,7 +4,7 @@ import { AbstractControl, ValidatorFn, Validators } from "@angular/forms";
 // General Validators:
 export class GeneralValidators
 {
-  // Integer Validator
+  // Integer Validator:
   static notInt(): ValidatorFn
   {
     return (c: AbstractControl): { [key: string]: boolean } | null =>
@@ -20,19 +20,14 @@ export class GeneralValidators
   }
 
 
-  // Range Validator
-  static withinRange(min: number, max: number): ValidatorFn
-  {
-    return (c: AbstractControl): { [key: string]: boolean } | null =>
-    {
-      if (c.value && c.value >= min && c.value <= max)
-      {
-        return { withinRange: true };
+  // Range Validator:
+  static range(min: number, max: number): ValidatorFn {
+    return (c: AbstractControl): { [key: string]: boolean } | null => {
+      if (c.value && (isNaN(c.value) || c.value < min || c.value > max)) {
+        return { range: true };
       }
-
-      // Else:
       return null;
-    }
+    };
   }
 
 }

@@ -185,12 +185,18 @@ export class ProductDetailComponent implements OnInit, OnDestroy
     const newReviewDialogueRef =
       this.newReviewDialogue.open(NewReviewDialogueComponent,
     {
-      width: '75%',
+      width: '60%',
+      height: 'fit-content',
+      maxHeight: '60%',
       data: {id: this.product.id}
     });
 
     // When the Dialogue closes.
-    newReviewDialogueRef.afterClosed().subscribe(result => {
+    newReviewDialogueRef.afterClosed().subscribe(result =>
+    {
+      // Console Log:
+      console.log("New Review Dialogue Output:", result);
+
       newReview = result;
     })
 
@@ -219,7 +225,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy
   templateUrl: './new-review-dialogue.component.html',
   styleUrls: ['./new-review-dialogue.component.css']
 })
-export class NewReviewDialogueComponent
+export class NewReviewDialogueComponent implements OnInit, OnDestroy
 {
   // Fields:
 
@@ -231,12 +237,16 @@ export class NewReviewDialogueComponent
 
   // ratingFormControl:
   // Form Control for ratings.
-  ratingFormControl: FormControl = new FormControl(
+  ratingFormControl: FormControl = new FormControl('',
   [
     Validators.required,
-    GeneralValidators.notInt,
-    GeneralValidators.withinRange(0,5),
+    GeneralValidators.notInt(),
+    GeneralValidators.range(0,5),
   ]);
+
+  // Subscription for ratings:
+  ratingSub$;
+
 
 
   // Constructor:
@@ -245,11 +255,35 @@ export class NewReviewDialogueComponent
     @Inject(MAT_DIALOG_DATA) public data: number) { }
 
 
+  // OnInitialization:
+  ngOnInit(): void
+  {
+    // Subscribe to valueChanges of ratingFormControl.
+    this.ratingSub$ = this.ratingFormControl.valueChanges.subscribe(
+      {
+        next: value =>
+        {
+          this._rating = value;
+        }
+      }
+    );
+  }
+
+
+  // OnDestruction:
+  ngOnDestroy(): void
+  {
+    // Unsubscribe from the valueChanges.
+    this.ratingSub$.unsubscribe();
+  }
+
+
+
   // cancel:
   // Cancels making a new Review.
   cancel(): void
   {
-    this.newReviewDialogueRef.close();
+    this.newReviewDialogueRef.close(null);
   }
 
 

@@ -3,21 +3,42 @@
 
 
 <!-- Dialogue Content -->
-<div mat-dialog-content class="font">
+<div mat-dialog-content class="font" id="forms">
 
   <!-- Review -->
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" id="review-text">
     <mat-label>Review Write-up:</mat-label>
     <textarea matInput placeholder="Something Something Tea"
-              [(ngModel)]="reviewContent")]>
+              [(ngModel)]="reviewContent">
     </textarea>
   </mat-form-field>
 
   <!-- Rating -->
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" id="review-rating">
+
+    <!-- Input -->
+
     <mat-label>Rating:</mat-label>
-    <input matInput type="number" [(ngModel)]="rating"
-           [formControl]="ratingFormControl" required>
+
+    <input matInput type="number" required
+           [formControl]="ratingFormControl">
+
+    <!-- Errors -->
+
+    <mat-error *ngIf="ratingFormControl.hasError('required')">
+      Please enter in an amount.
+    </mat-error>
+
+    <mat-error *ngIf="!ratingFormControl.hasError('required')
+                      && ratingFormControl.hasError('notInt')">
+      Please enter in an integer.
+    </mat-error>
+
+    <mat-error *ngIf="!ratingFormControl.hasError('required')
+                      && ratingFormControl.hasError('range')">
+      Please enter in a number between (and including) 0 and 5.
+    </mat-error>
+
   </mat-form-field>
 
 </div>
@@ -29,7 +50,8 @@
   <button mat-raised-button (click)="cancel()" color="primary">
     Cancel</button>
 
-  <button mat-raised-button (click)="makeReview()" color="primary">
+  <button mat-raised-button (click)="makeReview()" color="primary"
+          [disabled]="!ratingFormControl.valid">
     Submit</button>
 
 </div>

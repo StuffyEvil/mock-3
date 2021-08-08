@@ -10,31 +10,31 @@ import { ProductResolverService } from '../data-and-extraction/product/product-r
 
 @NgModule(
   {
-  declarations: [
-    ProductListComponent,
-    ProductDetailComponent,
-    NewReviewDialogueComponent,
-  ],
-  imports: [
-    SharedModule,
-    MaterialModule,
-    RouterModule.forChild(
-      [
-        {
-          path: '',
-          component: ProductListComponent
-        },
-        {
-          path: ':id',
-          component: ProductDetailComponent,
-          resolve: { resolvedData: ProductResolverService }
-        }
-      ]
-    )
-  ],
-  entryComponents: [
-    ProductDetailComponent,
-    NewReviewDialogueComponent,
-  ]
-})
+    declarations: [
+      ProductListComponent,
+      ProductDetailComponent,
+      NewReviewDialogueComponent,
+    ],
+    imports: [
+      SharedModule,
+      MaterialModule,
+      RouterModule.forChild(
+        [
+          {
+            path: '',
+            component: ProductListComponent
+          },
+          {
+            path: ':id',
+            component: ProductDetailComponent,
+            resolve: { resolvedData: ProductResolverService }
+          }
+        ]
+      )
+    ],
+    entryComponents: [
+      ProductDetailComponent,
+      NewReviewDialogueComponent,
+    ]
+  })
 export class ProductsModule { }
