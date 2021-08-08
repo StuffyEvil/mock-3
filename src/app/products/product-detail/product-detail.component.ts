@@ -22,6 +22,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy
 {
   /* - Fields - */
 
+
   pageTitle = "Product Detail";
   errorMessage: string = '';
 
@@ -52,7 +53,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy
 
   // Holds the purchaseForm.valueChanges subscription.
   purchaseFormSub$;
-
 
 
 
@@ -178,8 +178,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy
     // Console Log:
     console.log("Opening New Review Dialogue");
 
-    // Local variable:
-    var newReview: Review;
 
     // Open Dialogue:
     const newReviewDialogueRef =
@@ -197,20 +195,21 @@ export class ProductDetailComponent implements OnInit, OnDestroy
       // Console Log:
       console.log("New Review Dialogue Output:", result);
 
-      newReview = result;
+
+      // Check if newReview isn't null, which means that the submission for
+      // a new Review was successful.
+      if (result != null)
+      {
+        console.log("Sanity Check");
+
+        // Insert the new Review into the "database".
+        this.reviewService.createReview(result.id,
+          result.review, result.rating);
+      }
+
+      // Else, nothing happens.
     })
 
-
-    // Check if newReview isn't null, which means that the submission for
-    // a new Review was successful.
-    if (newReview)
-    {
-      // Insert the new Review into the "database".
-      this.reviewService.createReview(newReview.id,
-                            newReview.review, newReview.rating);
-    }
-
-    // Else, nothing happens.
   }
 
 }
