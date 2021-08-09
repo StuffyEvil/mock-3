@@ -1,3 +1,7 @@
+/* Import Theme colours */
+@import "theme-colours.scss";
+
+
 /* Header */
 #header
 {
