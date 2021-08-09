@@ -1,0 +1,8 @@
+// Import material theming functions.
+@import '~@angular/material/theming';
+
+
+// Obtain the colours.
+$theme-primary: mat.get-color-from-palette($mock-primary);
+$theme-accent: mat.get-color-from-palette($mock-accent);
+$theme-warn: mat.get-color-from-palette($mock-warn);
