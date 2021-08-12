@@ -1,7 +1,7 @@
 /* CSS for Empty Wrapper */
 #empty_wrapper
 {
-  padding: 20px;
+  padding: 2% 5% 2% 5%;
   /* Stopgap height cause I don't know how to make footer at the bottom
      of the page. */
   height: 60%;
@@ -23,7 +23,7 @@
 /* CSS for Wrapper div */
 #wrapper
 {
-  padding: 20px;
+  padding: 2% 5% 2% 5%;
   min-height: 65%;
   height: fit-content;
 }
