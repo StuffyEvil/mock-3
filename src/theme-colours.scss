@@ -1,8 +1,19 @@
-// Import material theming functions.
-@import '~@angular/material/theming';
+/*
+ * Gonna try to set up a Angular Material Theme Mixin for applying
+ * colours and such.
+ */
+ @use '~@angular/material' as mat;
+
+ /* Import Theming: */
+ @import '~@angular/material/theming';
+
+ /* Include Material Core: */
+ @include mat.core();
+
+ /* Import the actual theme: */
+ @import './custom-theme.scss';
 
 
-// Obtain the colours.
 $theme-primary: mat.get-color-from-palette($mock-primary);
 $theme-accent: mat.get-color-from-palette($mock-accent);
 $theme-warn: mat.get-color-from-palette($mock-warn);
