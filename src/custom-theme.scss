@@ -22,7 +22,7 @@
 // Going to produce my own palettes.
 
 // Primary palette:
-// Jade-themed
+// Jade-themed.
 $jade-palette:
 (
   50: #e5f6ee,
@@ -51,40 +51,10 @@ $jade-palette:
 );
 
 
-// Accent palette:
-// Gold-themed
-$gold-palette:
-(
-  50: #fffde5,
-  100: #fff9c0,
-  200: #fff595,
-  300: #fef167,
-  400: #fcec3f,
-  500: #fae700,
-  600: #ffd900,
-  700: #ffc000,
-  800: #ffa700,
-  900: #f37a00,
-
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: rgba(black, 0.87),
-    400: rgba(black, 0.87),
-    500: rgba(black, 0.87),
-    600: rgba(black, 0.87),
-    700: rgba(black, 0.87),
-    800: rgba(black, 0.87),
-    900: rgba(black, 0.87),
-  )
-);
-
-
 
 // Set the palettes accordingly.
-$mock-primary: mat.define-palette($jade-palette,600);
-$mock-accent: mat.define-palette($gold-palette,600);
+$mock-light-primary: mat.define-palette(mat.$light-green-palette,50);
+$mock-accent: mat.define-palette($jade-palette,600);
 
 // The warn palette is optional (defaults to red).
 $mock-warn: mat.define-palette(mat.$red-palette);
@@ -93,7 +63,7 @@ $mock-warn: mat.define-palette(mat.$red-palette);
 // theming systems such as "color" or "typography".
 $mock-theme: mat.define-light-theme((
   color: (
-    primary: $mock-primary,
+    primary: $mock-light-primary,
     accent: $mock-accent,
     warn: $mock-warn,
   )
