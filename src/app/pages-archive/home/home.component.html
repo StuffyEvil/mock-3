@@ -2,12 +2,12 @@
   Carousel:
 -->
 
-<ngb-carousel class="carousel background primary">
+<ngb-carousel class="carousel background accent">
   <!-- Slide 1 -->
   <ng-template ngbSlide>
     <div class="picsum-img-wrapper">
       <img src="assets/images/Tea 1.jpg"
-           alt="Tea 1" class="border primary carousel-image">
+           alt="Tea 1" class="carousel-image">
     </div>
     <div>
       <h4 class="carousel-caption">Picture for Tea 1</h4>
@@ -44,12 +44,12 @@
      - this instance holds various tea types
 -->
 
-<div class="background primary">
+<div class="background accent">
   <!-- Row 1 -->
   <div class="row rows">
     <!-- Black Tea -->
     <div class="col-4">
-      <mat-card class="grid-module">
+      <mat-card class="grid-module background primary">
         <a [routerLink]="['/products/1']" routerLinkActive="active">
           <img mat-card-img
                class="card-img-bottom grid-image"
@@ -63,7 +63,7 @@
 
     <!-- Green Tea -->
     <div class="col-4">
-      <mat-card class="grid-module">
+      <mat-card class="grid-module background primary">
         <a [routerLink]="['/products/2']" routerLinkActive="active">
           <img mat-card-img class="card-img-bottom grid-image"
                src="../../assets/images/Green Tea.jpg" alt="Green Tea">
@@ -76,7 +76,7 @@
 
     <!-- White Tea -->
     <div class="col-4">
-      <mat-card class="grid-module">
+      <mat-card class="grid-module background primary">
         <a [routerLink]="['/products/3']" routerLinkActive="active">
           <img mat-card-img class="card-img-bottom grid-image"
                src="../../assets/images/White Tea.jpg" alt="White Tea">
@@ -92,7 +92,7 @@
   <div class="row rows">
     <!-- Yellow Tea -->
     <div class="col-4">
-      <mat-card class="grid-module">
+      <mat-card class="grid-module background primary">
         <a [routerLink]="['/products/4']" routerLinkActive="active">
           <img mat-card-img class="card-img-bottom grid-image"
                src="../../assets/images/Yellow Tea.png" alt="Yellow Tea">
@@ -105,7 +105,7 @@
 
     <!-- Oolong Tea -->
     <div class="col-4">
-      <mat-card class="grid-module">
+      <mat-card class="grid-module background primary">
         <a [routerLink]="['/products/5']" routerLinkActive="active">
           <img mat-card-img class="card-img-bottom grid-image"
                src="../../assets/images/Oolong Tea.jpg" alt="Oolong Tea">
@@ -118,7 +118,7 @@
 
     <!-- Pu-erh Tea -->
     <div class="col-4">
-      <mat-card class="grid-module">
+      <mat-card class="grid-module background primary">
         <a [routerLink]="['/products/6']" routerLinkActive="active">
           <img mat-card-img class="card-img-bottom grid-image"
                src="../../assets/images/Pu-erh Tea.jpg" alt="Pu-erh Tea">
@@ -135,7 +135,7 @@
     BTW, I took all the images off of the Google Images just
     as placeholder.
   -->
-  <p id="disclaimer" class="background primary">
+  <p id="disclaimer" class="background accent">
     FYI, all of these photos I just "borrowed" off of Google Images,
     because producing my own photos for a mock-old implementation will
     take too much time, at least for now.

@@ -1,8 +1,8 @@
 <!-- Wrapping div -->
-<div class="background primary" id="wrapper">
+<div class="background accent" id="wrapper">
 
   <!-- Mat-Card -->
-  <mat-card>
+  <mat-card class="background primary">
 
     <!-- Mat-Card Title
     <mat-card-title>
@@ -44,7 +44,7 @@
           <!-- Add to Shopping Cart -->
 
           <!-- Input for Amount -->
-          <mat-form-field appearance="outline" color="primary">
+          <mat-form-field appearance="outline" color="accent">
 
             <!-- Input -->
 
@@ -72,7 +72,7 @@
           </mat-form-field>
 
           <!-- Add to Shopping Cart Button -->
-          <button mat-raised-button color="primary"
+          <button mat-raised-button color="accent"
                   (click)="addToCart()"
                   [disabled]="!purchaseFormControl.valid">
             Add to Shopping Cart
@@ -89,7 +89,7 @@
 
 
   <!-- Mat-Card for Reviews -->
-  <mat-card id="review">
+  <mat-card id="review" class="primary">
 
     <!-- Mat-Card Title -->
     <mat-card-title class="font">
@@ -103,7 +103,7 @@
       <div *ngFor="let review of reviews">
 
         <!-- Horizontal Divider -->
-        <hr color="primary">
+        <hr color="accent">
 
         <!-- Actual Review -->
         <div class="row reviews">
@@ -115,12 +115,12 @@
 
       </div>
 
-      <hr color="primary">
+      <hr color="accent">
 
       <!-- New Review -->
 
       <button mat-raised-button (click)="openNewReviewDialogue()"
-              color="primary">
+              color="accent">
         Write a Review</button>
 
     </mat-card-content>

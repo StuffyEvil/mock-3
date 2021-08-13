@@ -1,8 +1,8 @@
 <!-- div as wrapper -->
-<div id="wrapper" class="background primary">
+<div id="wrapper" class="background accent">
 
   <!-- Material Card to hold the actual text -->
-  <mat-card id="card">
+  <mat-card id="card" class="primary">
     <!-- Mat-Card Title -->
     <mat-card-title class="font">Page Not Found!</mat-card-title>
 
@@ -12,7 +12,7 @@
 
       <!-- Return Button -->
       <a [routerLink]="['/home']" routerLinkActive="active">
-        <button mat-raised-button color="primary" class="font">
+        <button mat-raised-button color="accent" class="font">
           Return to Home</button>
       </a>
     </mat-card-content>

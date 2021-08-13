@@ -1,8 +1,8 @@
 <!-- First wrap in in a div -->
-<div class="background primary" id="wrapper">
+<div class="background accent" id="wrapper">
 
   <!-- Angular Material Card -->
-  <mat-card>
+  <mat-card class="background primary">
 
     <!-- Card Header ~ this may not be needed
     <mat-card-header id="header">
@@ -18,7 +18,7 @@
 
         <!-- Fitering Input -->
         <mat-form-field appearance="outline"
-                        color="primary" class="input">
+                        color="accent" class="input">
           <mat-label>Filter By:</mat-label>
           <input type="text" matInput
                  placeholder="E.x. Tea" [(ngModel)]="listFilter">
@@ -26,7 +26,7 @@
 
         <!-- Category Filter Input -->
         <mat-form-field appearance="outline"
-                        color="primary" class="input">
+                        color="accent" class="input">
           <mat-label>Category Sorting:</mat-label>
           <mat-select [(value)]="selectedCategory">
             <mat-option value="0">All</mat-option>
@@ -42,7 +42,7 @@
       </div>
 
 
-      <hr color="primary">
+      <hr color="accent">
 
 
       <!-- Product List ~ Row -->
@@ -53,7 +53,7 @@
 
           <!-- Image Column -->
           <ng-container matColumnDef="imageUrl">
-            <th class="background primary"
+            <th class="background accent"
                 mat-header-cell *matHeaderCellDef>Image</th>
             <td mat-cell *matCellDef="let product">
               <a [routerLink]="['/products', product.id]"
@@ -67,7 +67,7 @@
 
           <!-- Name Column -->
           <ng-container matColumnDef="productName">
-            <th class="background primary"
+            <th class="background accent"
                 mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let product">
               <a [routerLink]="['/products', product.id]"
@@ -79,7 +79,7 @@
 
           <!-- Category Column -->
           <ng-container matColumnDef="category">
-            <th class="background primary"
+            <th class="background accent"
                 mat-header-cell *matHeaderCellDef>Category</th>
             <td mat-cell *matCellDef="let product">
               {{product.category}}
@@ -88,7 +88,7 @@
 
           <!-- Price Column -->
           <ng-container matColumnDef="price">
-            <th class="background primary"
+            <th class="background accent"
                 mat-header-cell *matHeaderCellDef>Price</th>
             <td mat-cell *matCellDef="let product">
               ${{product.price}}
@@ -97,7 +97,7 @@
 
           <!-- Rating Column -->
           <ng-container matColumnDef="rating">
-            <th class="background primary"
+            <th class="background accent"
                 mat-header-cell *matHeaderCellDef>Rating</th>
             <td mat-cell *matCellDef="let product">
               <!-- Use App-Star from Shared Module -->
@@ -108,7 +108,7 @@
 
           <!-- Description Column -->
           <ng-container matColumnDef="description">
-            <th class="background primary"
+            <th class="background accent"
                 mat-header-cell *matHeaderCellDef>Description</th>
                 <td mat-cell *matCellDef="let product">
                   {{product.description}}

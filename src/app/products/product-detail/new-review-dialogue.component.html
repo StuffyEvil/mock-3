@@ -1,12 +1,13 @@
 <!-- Header -->
-<h2 mat-dialog-title class="font">Write a New Review</h2>
+<h2 mat-dialog-title class="font background primary">Write a New Review</h2>
 
 
 <!-- Dialogue Content -->
-<div mat-dialog-content class="font" id="forms">
+<div mat-dialog-content class="font background primary" id="forms">
 
   <!-- Review -->
-  <mat-form-field appearance="outline" id="review-text">
+  <mat-form-field appearance="outline"
+      id="review-text" color="accent">
     <mat-label>Review Write-up:</mat-label>
     <textarea matInput placeholder="Something Something Tea"
               [(ngModel)]="reviewContent">
@@ -14,7 +15,8 @@
   </mat-form-field>
 
   <!-- Rating -->
-  <mat-form-field appearance="outline" id="review-rating">
+  <mat-form-field appearance="outline"
+      id="review-rating" color="accent">
 
     <!-- Input -->
 
@@ -50,12 +52,12 @@
 
 
 <!-- Dialogue Action -->
-<div mat-dialog-actions class="font">
+<div mat-dialog-actions class="font background primary">
 
-  <button mat-raised-button (click)="cancel()" color="primary">
+  <button mat-raised-button (click)="cancel()" color="accent">
     Cancel</button>
 
-  <button mat-raised-button (click)="makeReview()" color="primary"
+  <button mat-raised-button (click)="makeReview()" color="accent"
           [disabled]="!ratingFormControl.valid">
     Submit</button>
 

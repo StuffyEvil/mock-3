@@ -3,7 +3,7 @@
   Use a div as the warp structure.
 -->
 
-<div id="header" class="container-fluid" color="primary">
+<div id="header" class="container-fluid background primary">
 
   <!-- Logo Image -->
   <a [routerLink]="['/home']" routerLinkActive="active">
@@ -42,7 +42,7 @@
   <!-- Shopping Cart Icon -->
   <div id="shopping_cart">
     <a [routerLink]="['/shopping-cart']" routerLinkActive="active">
-      <button mat-mini-fab color="primary"
+      <button mat-mini-fab color="accent"
               [matBadge]="cart.num_of_products"
               matBadgePosition="after" matBadgeColor="warn">
         <mat-icon aria-hidden="false" aria-label="icon">
@@ -62,7 +62,7 @@
 
 
 
-<div id="footer" class="container-fluid">
+<div id="footer" class="container-fluid background primary">
   <div class="row">
 
     <div class="col-4">
