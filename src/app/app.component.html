@@ -39,6 +39,19 @@
     </ul>
   </div>
 
+
+  <!-- Theme Toggle -->
+  <div id="theme-toggle">
+    <button mat-icon-button color="accent"
+        (click)="toggleTheme()">
+      <mat-icon aria-hidden="false" aria-label="icon">
+        invert_colors
+      </mat-icon>
+    </button>
+  </div>
+
+
+
   <!-- Shopping Cart Icon -->
   <div id="shopping_cart">
     <a [routerLink]="['/shopping-cart']" routerLinkActive="active">
