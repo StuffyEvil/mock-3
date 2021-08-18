@@ -18,22 +18,6 @@
 }
 
 
-/* CSS for Navigational Stuff */
-
-ul
-{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li
-{
-  float: left;
-  margin: 5px;
-}
-
 /* Stuff for buttons */
 .button
 {
