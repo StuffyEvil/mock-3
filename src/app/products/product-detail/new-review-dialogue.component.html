@@ -1,73 +1,68 @@
-<!-- Wrapping div -->
-<div class="background primary">
-
-  <!-- Header -->
-  <h2 mat-dialog-title class="font background primary">
-    Write a New Review
-  </h2>
+<!-- Header -->
+<h2 mat-dialog-title class="font">Write a New Review</h2>
 
 
-  <!-- Dialogue Content -->
-  <div mat-dialog-content class="font background primary" id="forms">
+<!-- Dialogue Content -->
+<div mat-dialog-content class="font" id="forms">
 
-    <!-- Review -->
-    <mat-form-field appearance="outline" id="review-text" color="accent">
-      <mat-label>Review Write-up:</mat-label>
-      <textarea matInput placeholder="Something Something Tea"
-                [(ngModel)]="reviewContent">
+  <!-- Review -->
+  <mat-form-field appearance="outline"
+      id="review-text" color="accent">
+    <mat-label>Review Write-up:</mat-label>
+    <textarea matInput placeholder="Something Something Tea"
+              [(ngModel)]="reviewContent">
     </textarea>
-    </mat-form-field>
+  </mat-form-field>
 
-    <!-- Rating -->
-    <mat-form-field appearance="outline" id="review-rating" color="accent">
+  <!-- Rating -->
+  <mat-form-field appearance="outline"
+      id="review-rating" color="accent">
 
-      <!-- Input -->
+    <!-- Input -->
 
-      <mat-label>Rating:</mat-label>
+    <mat-label>Rating:</mat-label>
 
-      <input matInput type="number" required
-             [formControl]="ratingFormControl">
+    <input matInput type="number" required
+           [formControl]="ratingFormControl">
 
-      <!-- Errors -->
+    <!-- Errors -->
 
-      <mat-error *ngIf="ratingFormControl.hasError('required')">
-        Please enter in an amount.
-      </mat-error>
+    <mat-error *ngIf="ratingFormControl.hasError('required')">
+      Please enter in an amount.
+    </mat-error>
 
-      <mat-error *ngIf="!ratingFormControl.hasError('required')
+    <mat-error *ngIf="!ratingFormControl.hasError('required')
                       && ratingFormControl.hasError('notInt')">
-        Please enter in an integer.
-      </mat-error>
+      Please enter in an integer.
+    </mat-error>
 
-      <mat-error *ngIf="!ratingFormControl.hasError('required')
+    <mat-error *ngIf="!ratingFormControl.hasError('required')
                       && ratingFormControl.hasError('range')">
-        Please enter in a number between (and including) 0 and 5.
-      </mat-error>
+      Please enter in a number between (and including) 0 and 5.
+    </mat-error>
 
-    </mat-form-field>
+  </mat-form-field>
 
-    <p>
-      Note that due to the nature of the false database, new reviews
-      truly retained.
-    </p>
+  <p>
+    Note that due to the nature of the false database, new reviews
+    truly retained.
+  </p>
 
-  </div>
+</div>
 
 
-  <!-- Dialogue Action -->
-  <div mat-dialog-actions class="font background primary">
+<!-- Dialogue Action -->
+<div mat-dialog-actions class="font">
 
-    <button mat-raised-button (click)="cancel()"
-            color="accent" class="font">
-      Cancel
-    </button>
+  <button mat-raised-button (click)="cancel()"
+          color="accent" class="font">
+    Cancel
+  </button>
 
-    <button mat-raised-button (click)="makeReview()"
-            color="accent" class="font"
-            [disabled]="!ratingFormControl.valid">
-      Submit
-    </button>
-
-  </div>
+  <button mat-raised-button (click)="makeReview()"
+          color="accent" class="font"
+          [disabled]="!ratingFormControl.valid">
+    Submit
+  </button>
 
 </div>
