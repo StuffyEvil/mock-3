@@ -69,7 +69,7 @@ $mock-light-theme: mat.define-light-theme((
 
 
 // Dark-theme palette(s).
-$mock-dark-primary: mat.define-palette(mat.$grey-palette,'900');
+$mock-dark-primary: mat.define-palette(mat.$grey-palette,900);
 
 // Create the dark-theme.
 $mock-dark-theme: mat.define-dark-theme((
