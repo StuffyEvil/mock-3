@@ -13,15 +13,16 @@
 
 
 // The Colour Mixin
-@mixin theme-colours($mock-theme)
+@mixin theme-colours($theme)
 {
   // Obtain the palettes
-  $p: map-get($mock-theme, primary);
-  $a: map-get($mock-theme, accent);
-  $w: map-get($mock-theme, warn);
+  $p: map-get($theme, primary);
+  $a: map-get($theme, accent);
+  $w: map-get($theme, warn);
 
   // Obtain the colours
   $primary: mat.get-color-from-palette($p);
+  $primary_contrast: mat.get-color-from-palette($p, '-contrast');
   $accent: mat.get-color-from-palette($a);
   $warning: mat.get-color-from-palette($w);
 
@@ -31,6 +32,11 @@
   .colour.primary
   {
     color: $primary;
+  }
+
+  .colour.primary_contrast
+  {
+    color: $primary_contrast;
   }
 
   .colour.accent
