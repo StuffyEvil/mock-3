@@ -80,29 +80,40 @@
 
 
 
-<div id="footer" class="container-fluid background primary">
+<div id="footer" class="container-fluid background accent">
 
-  <div class="row">
+  <mat-card class="background primary">
 
-    <div class="col-4">
-      <h3 class="colour primary_contrast">Social Media</h3>
-      <p>Facebook</p>
-      <p>Twitter</p>
-      <p>Youtube</p>
-    </div>
+    <mat-card-content class="font">
 
-    <div class="col-4">
-      <h3>Customer Support</h3>
-      <a [routerLink]="['/q-a']" routerLinkActive="active">
-        Q & A</a>
-    </div>
+      <div class="row">
 
-    <div class="col-4">
-      <h3>About Us</h3>
-      <a [routerLink]="['/about-us']" routerLinkActive="active">
-        About Us</a>
-    </div>
+        <div class="col-4">
+          <h3>Social Media</h3>
+          <p>Facebook</p>
+          <p>Twitter</p>
+          <p>Youtube</p>
+        </div>
 
-  </div>
+        <div class="col-4">
+          <h3>Customer Support</h3>
+          <a [routerLink]="['/q-a']" routerLinkActive="active">
+            Q & A</a>
+        </div>
+
+        <div class="col-4">
+          <h3>About Us</h3>
+          <a [routerLink]="['/about-us']" routerLinkActive="active">
+            About Us</a>
+        </div>
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+
+
 
 </div>
