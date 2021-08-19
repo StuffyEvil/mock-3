@@ -17,6 +17,8 @@
   float: left;
 }
 
+/* CSS for Logo Button */
+
 
 /* CSS for Navigational Stuff */
 
@@ -55,12 +57,6 @@ li
   color: black;
 }
 
-/* Footer button */
-.footer-button
-{
-  padding: 0px;
-  margin: 0px;
-}
 
 
 /* CSS for Shopping Cart */
