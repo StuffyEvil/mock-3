@@ -54,7 +54,10 @@ $jade-palette:
 
 // Default / Light-theme palettes.
 $mock-light-primary: mat.define-palette(mat.$light-green-palette,0);
-$mock-accent: mat.define-palette($jade-palette,600);
+
+//$mock-accent: mat.define-palette($jade-palette,600);
+$mock-accent: mat.define-palette(mat.$light-green-palette);
+
 $mock-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
