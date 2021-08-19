@@ -45,7 +45,7 @@ li
 /* Footer */
 #footer
 {
-  padding: 20px;
+  padding: 1%;
 }
 
 /* Footer Text */
@@ -53,6 +53,13 @@ li
 {
   font-family: 'Times New Roman', Times, serif;
   color: black;
+}
+
+/* Footer button */
+.footer-button
+{
+  padding: 0px;
+  margin: 0px;
 }
 
 
