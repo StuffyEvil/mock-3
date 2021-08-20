@@ -55,13 +55,16 @@ $jade-palette:
 // Default / Light-theme palettes.
 $mock-light-primary: mat.define-palette(mat.$light-green-palette,0);
 
-//$mock-accent: mat.define-palette($jade-palette,600);
+// $mock-accent: mat.define-palette($jade-palette,600);
 $mock-accent: mat.define-palette(mat.$light-green-palette);
+// Note that there is a bug involving Angular Material Dialogue where
+// opening the dialogue once in light theme makes opening the dialogue
+// in dark theme not have dark background.
 
 $mock-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
+// Create the theme object. A theme consists of configurations for
+// individual theming systems such as "color" or "typography".
 $mock-light-theme: mat.define-light-theme((
   color: (
     primary: $mock-light-primary,
