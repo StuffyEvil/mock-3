@@ -26,6 +26,16 @@
   padding: 2% 5% 2% 5%;
   min-height: 65%;
   height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+/* CSS for card-list */
+.card-list
+{
+  width: 96%;
 }
 
 /* CSS for the Table */
